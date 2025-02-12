@@ -136,7 +136,7 @@ for tp in timepoints:
     )
     
     plt.title(f'Timepoint {tp}\nDots: Fixed clustering from tp=={fixed_tp} (good=green, bad=red)\n'
-              f'Mesh: New clustering boundaries', fontsize=8)
+              f'Mesh: New clustering boundaries', fontsize=5)
     plt.xlabel(f'{required_locations[0]} Score', fontsize=8)
     plt.ylabel(f'{required_locations[1]} Score', fontsize=8)
     
