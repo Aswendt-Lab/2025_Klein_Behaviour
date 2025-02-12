@@ -150,8 +150,8 @@ for tp in timepoints:
     
     # Now, add a separate legend for the dynamic mesh (dynamic cluster)
     dynamic_handles = [
-        mpatches.Patch(color=palette_new['good'], alpha=0.1, label='Dynamic Cluster: Good'),
-        mpatches.Patch(color=palette_new['bad'], alpha=0.1, label='Dynamic Cluster: Bad')
+        mpatches.Patch(color=palette_new['good'], alpha=0.1, label='Good'),
+        mpatches.Patch(color=palette_new['bad'], alpha=0.1, label='Bad')
     ]
     plt.legend(handles=dynamic_handles, title='Dynamic Cluster', bbox_to_anchor=(1.05, 0.5), loc='center left', fontsize=8)
     
