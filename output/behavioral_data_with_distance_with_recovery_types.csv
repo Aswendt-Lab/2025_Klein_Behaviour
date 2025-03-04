@@ -1,0 +1,112 @@
+lex,uex,tp,fixed_type,distance_to_boundary,record_id,recovery_type
+83.0,93.0,0,good,22.239157935328883,2,Steady recovery
+67.0,96.0,0,good,17.682023556094205,3,Late recovery with acute decline
+79.0,89.0,0,good,16.862952386159325,4,Steady recovery
+59.0,89.0,0,good,7.821596027094222,8,Steady recovery
+52.0,74.0,0,bad,-8.72263223866558,9,Steady recovery
+81.0,104.0,0,good,31.14684156215285,10,Early recovery with chronic decline
+54.0,94.0,0,good,10.021174784023618,12,Late recovery with acute decline
+36.0,42.0,0,bad,-44.49919154476997,15,Late recovery with acute decline
+66.0,83.0,0,good,5.634169336732202,18,Steady recovery
+50.0,58.0,0,bad,-23.89850498399824,22,Steady recovery
+75.0,58.0,0,bad,-12.596809535166862,28,Steady recovery
+84.0,92.0,0,good,21.799242183943004,31,Early recovery with chronic decline
+56.0,98.0,0,good,14.493244697286666,36,Early recovery with chronic decline
+76.0,86.0,0,good,12.83079822428216,40,Steady recovery
+47.0,60.0,0,bad,-23.47074129917974,42,Steady recovery
+51.0,48.0,0,bad,-32.36627285943633,45,Steady recovery
+79.0,112.0,0,good,37.378574480959415,47,Late recovery with acute decline
+59.0,60.0,0,bad,-18.04592748374068,49,Steady recovery
+65.0,97.0,0,good,17.669871489526827,53,Late recovery with acute decline
+77.0,56.0,0,bad,-13.47664103793862,55,Steady recovery
+62.0,109.0,0,good,27.01747086773668,58,Steady recovery
+70.0,94.0,0,good,17.2542598712757,59,Steady recovery
+83.0,112.0,0,good,39.18684575277244,62,Late recovery with acute decline
+65.0,93.0,0,good,14.101937212170292,66,Steady recovery
+56.0,90.0,0,good,7.357376142573591,69,Early recovery with chronic decline
+46.0,54.0,0,bad,-29.274710533167795,72,Early recovery with chronic decline
+50.0,54.0,0,bad,-27.46643926135478,73,Steady decline
+62.0,111.0,0,good,28.801438006414948,78,Steady recovery
+65.0,60.0,0,bad,-15.333520576021144,79,Late recovery with acute decline
+78.0,64.0,0,bad,5.888704665272289,80,Steady recovery
+56.0,73.0,0,bad,-7.806344536191693,81,Steady recovery
+65.0,64.0,0,bad,-11.765586298664608,82,Steady recovery
+45.0,57.0,0,bad,-27.05082764310365,85,Steady recovery
+67.0,93.0,0,good,15.0060728480768,86,Steady recovery
+68.0,94.0,0,good,16.350124235369194,88,Steady recovery
+86.0,90.0,0,good,20.919410681171247,92,Late recovery with acute decline
+68.0,73.0,0,bad,-2.381530720752631,95,Late recovery with acute decline
+85.0,108.0,1,good,36.52304711132241,2,Steady recovery
+75.0,84.0,1,good,10.594763267650633,3,Late recovery with acute decline
+75.0,92.0,1,good,17.73063182236371,4,Steady recovery
+82.0,109.0,1,good,36.05882722680178,8,Steady recovery
+85.0,100.0,1,bad,29.38717855660933,9,Steady recovery
+86.0,126.0,1,good,53.03081917738008,10,Early recovery with chronic decline
+68.0,80.0,1,good,3.8623542646213096,12,Late recovery with acute decline
+26.0,41.0,1,bad,-49.91185329364165,15,Late recovery with acute decline
+80.0,120.0,1,good,44.96651085362575,18,Steady recovery
+57.0,83.0,1,bad,1.565558975152906,22,Steady recovery
+84.0,72.0,1,bad,3.959570797160317,28,Steady recovery
+84.0,111.0,1,good,38.74693000138656,31,Early recovery with chronic decline
+79.0,105.0,1,good,31.134689495585476,36,Early recovery with chronic decline
+84.0,123.0,1,good,49.45073283345618,40,Steady recovery
+64.0,96.0,1,bad,16.325820102234438,42,Steady recovery
+77.0,60.0,1,bad,-9.908706760582085,45,Steady recovery
+83.0,108.0,1,good,35.6189114754159,47,Late recovery with acute decline
+69.0,67.0,1,bad,-7.281364318834182,49,Steady recovery
+65.0,64.0,1,good,-11.765586298664608,53,Late recovery with acute decline
+81.0,75.0,1,bad,5.279318051317954,55,Steady recovery
+86.0,119.0,1,good,46.78693419200614,58,Steady recovery
+72.0,106.0,1,good,28.862198339251822,59,Steady recovery
+77.0,101.0,1,good,26.662619582322428,62,Late recovery with acute decline
+86.0,112.0,1,good,40.543049206632205,66,Steady recovery
+71.0,99.0,1,good,22.166245535924627,69,Early recovery with chronic decline
+56.0,54.0,1,bad,-24.75403235363525,72,Early recovery with chronic decline
+36.0,58.0,1,bad,-30.22745443534381,73,Steady decline
+77.0,120.0,1,good,43.61030739976598,78,Steady recovery
+49.0,42.0,1,bad,-38.62230991137765,79,Late recovery with acute decline
+85.0,100.0,1,bad,29.38717855660933,80,Steady recovery
+68.0,87.0,1,bad,10.10623924999525,81,Steady recovery
+78.0,64.0,1,bad,5.888704665272289,82,Steady recovery
+56.0,99.0,1,bad,15.3852282666258,85,Steady recovery
+69.0,98.0,1,good,20.370126330678985,86,Steady recovery
+67.0,103.0,1,good,23.925908541468143,88,Steady recovery
+79.0,86.0,1,good,14.187001678141923,92,Late recovery with acute decline
+56.0,69.0,1,bad,-11.37427881354823,95,Late recovery with acute decline
+86.0,116.0,2,good,44.11098348398874,2,Steady recovery
+80.0,88.0,2,good,16.42303663477345,3,Late recovery with acute decline
+85.0,117.0,2,good,44.55089923537462,4,Steady recovery
+86.0,119.0,2,good,46.78693419200614,8,Steady recovery
+79.0,112.0,2,bad,37.378574480959415,9,Steady recovery
+79.0,123.0,2,good,47.190393743689896,10,Early recovery with chronic decline
+82.0,124.0,2,good,49.4385807668888,12,Late recovery with acute decline
+35.0,40.0,2,bad,-46.73522650140149,15,Late recovery with acute decline
+86.0,126.0,2,good,53.03081917738008,18,Steady recovery
+75.0,89.0,2,bad,15.054681114346304,22,Steady recovery
+85.0,84.0,2,bad,15.115441447183183,28,Steady recovery
+85.0,96.0,2,good,25.8192442792528,31,Early recovery with chronic decline
+83.0,93.0,2,good,22.239157935328883,36,Early recovery with chronic decline
+86.0,126.0,2,good,53.03081917738008,40,Steady recovery
+83.0,120.0,2,bad,46.32271430748551,42,Steady recovery
+79.0,77.0,2,bad,6.159149554089713,45,Steady recovery
+86.0,125.0,2,good,52.13883560804095,47,Late recovery with acute decline
+78.0,85.0,2,bad,12.842950290849531,49,Steady recovery
+79.0,60.0,2,good,-9.004571124675572,53,Late recovery with acute decline
+83.0,77.0,2,bad,7.967420825902733,55,Steady recovery
+86.0,126.0,2,good,53.03081917738008,58,Steady recovery
+86.0,126.0,2,good,53.03081917738008,59,Steady recovery
+86.0,126.0,2,good,53.03081917738008,62,Late recovery with acute decline
+83.0,115.0,2,good,41.86279646078984,66,Steady recovery
+74.0,93.0,2,good,18.170547573749587,69,Early recovery with chronic decline
+52.0,49.0,2,bad,-31.022221472143936,72,Early recovery with chronic decline
+50.0,47.0,2,bad,-33.71032424672872,73,Steady decline
+80.0,120.0,2,good,44.96651085362575,78,Steady recovery
+79.0,77.0,2,bad,6.159149554089713,79,Late recovery with acute decline
+86.0,121.0,2,bad,48.570901330684414,80,Steady recovery
+79.0,102.0,2,bad,28.458738787568077,81,Steady recovery
+83.0,93.0,2,bad,22.239157935328883,82,Steady recovery
+70.0,94.0,2,bad,17.2542598712757,85,Steady recovery
+83.0,115.0,2,good,41.86279646078984,86,Steady recovery
+80.0,108.0,2,good,34.262708021556136,88,Steady recovery
+86.0,97.0,2,good,27.163295666545185,92,Late recovery with acute decline
+47.0,83.0,2,bad,-2.955119204379646,95,Late recovery with acute decline

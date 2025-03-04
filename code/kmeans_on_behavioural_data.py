@@ -19,8 +19,19 @@ os.makedirs(figures_dir, exist_ok=True)
 csv_file = os.path.join(output_dir, 'behavioral_data_cleaned.csv')
 df = pd.read_csv(csv_file)
 
-# Define the required score locations
+# Define the required score locations (order is important for later calculations)
 required_locations = ['uex', 'lex']
+
+###############################
+# Define maximum scores based on:
+# "Hi, der Uex hat 126 Punkte und der Lex 86 Punkte im Gesamtscore"
+###############################
+max_uex_score = 126
+max_lex_score = 86
+
+# For tick labels, the max tick is the true max, but the axis limits are set 15% higher.
+x_lim = max_lex_score * 1.15  # x-axis limit is 15% more than the max lex score.
+y_lim = max_uex_score * 1.15  # y-axis limit is 15% more than the max uex score.
 
 ###############################
 # Step 1: Fixed clustering (for dot colors and decision boundary)
@@ -59,9 +70,12 @@ normal_vector = center1 - center0  # vector perpendicular to the boundary (up to
 n_norm = np.linalg.norm(normal_vector)
 
 # Compute a mesh grid for the fixed boundary (for plotting the gray dashed line)
-xx_fixed, yy_fixed = np.meshgrid(np.linspace(0, 150, 200),
-                                 np.linspace(0, 150, 200))
-grid_points_fixed = np.c_[xx_fixed.ravel(), yy_fixed.ravel()]
+# For the model, the order is [uex, lex], so we create a grid with:
+#   x corresponding to lex and y corresponding to uex, then swap.
+xx_fixed, yy_fixed = np.meshgrid(np.linspace(0, x_lim, 200),
+                                 np.linspace(0, y_lim, 200))
+# Supply points as [uex, lex]
+grid_points_fixed = np.c_[yy_fixed.ravel(), xx_fixed.ravel()]
 Z_fixed = kmeans_fixed.predict(grid_points_fixed)
 Z_fixed = Z_fixed.reshape(xx_fixed.shape)
 # Map predictions: 1 if equals the good_fixed_cluster, else 0
@@ -79,7 +93,20 @@ palette_new = {'good': 'green', 'bad': 'red'}
 # List to store computed distances for each subject at each timepoint
 all_distances = []
 
-for tp in timepoints:
+# Define custom ticks (same for all subplots)
+num_ticks = 5
+x_ticks = np.linspace(0, max_lex_score, num=num_ticks)
+x_tick_labels = [f"{int(tick)}" for tick in x_ticks]
+x_tick_labels[-1] = f"     {int(x_ticks[-1])}$_{{max}}$"
+
+y_ticks = np.linspace(0, max_uex_score, num=num_ticks)
+y_tick_labels = [f"{int(tick)}" for tick in y_ticks]
+y_tick_labels[-1] = f"{int(y_ticks[-1])}$_{{max}}$"
+
+# Create a single figure with 1 row and 3 columns of subplots and shared y-axis
+fig, axes = plt.subplots(1, len(timepoints), sharey=True, figsize=(18 * cm , 6 * cm), dpi=300)
+
+for ax, tp in zip(axes, timepoints):
     # Subset and pivot the current timepoint's data
     df_tp = df[df['tp'] == tp].copy()
     pivot_tp = df_tp.pivot(index='record_id', columns='position', values='score')
@@ -88,12 +115,11 @@ for tp in timepoints:
         continue
     pivot_tp = pivot_tp.dropna(subset=required_locations)
     pivot_tp['tp'] = tp  # add the timepoint info
-    
+
     # Merge the fixed clustering assignment (for dot colors)
     merged_for_dots = pivot_tp.merge(fixed_df, left_index=True, right_index=True, how='left')
-    
+
     # Calculate the raw perpendicular distance from each point P ([uex, lex]) to the fixed boundary:
-    # raw_distance = ((P - midpoint) dot normal_vector) / ||normal_vector||
     points = merged_for_dots[required_locations].values
     raw_distance = (points - midpoint).dot(normal_vector) / n_norm
 
@@ -104,47 +130,47 @@ for tp in timepoints:
     signed_distance = np.where(point_norms < midpoint_norm, -np.abs(raw_distance), np.abs(raw_distance))
     
     merged_for_dots['distance_to_boundary'] = signed_distance
-    
-    # Save the computed distances along with record_id and timepoint
     merged_for_dots['record_id'] = merged_for_dots.index
     all_distances.append(merged_for_dots.reset_index(drop=True))
     
-    # Plotting
-    plt.figure(figsize=(9 * cm, 9 * cm), dpi=300)
+    # Plot the fixed decision boundary as a dashed gray line on the current axis
+    ax.contour(xx_fixed, yy_fixed, Z_fixed_mapped, levels=[0.5],
+               colors='grey', linestyles='dashed', linewidths=1)
     
-    # Plot the fixed decision boundary as a dashed gray line
-    plt.contour(xx_fixed, yy_fixed, Z_fixed_mapped, levels=[0.5],
-                colors='grey', linestyles='dashed', linewidths=1)
-    
-    # Plot the subject dots colored by the fixed clustering assignment
+    # Plot the subject dots colored by the fixed clustering assignment (swap axes: x=lex, y=uex)
     sns.scatterplot(
         data=merged_for_dots,
-        x=required_locations[0],
-        y=required_locations[1],
+        x='lex',
+        y='uex',
         hue='fixed_type',
         palette=palette_new,
-        s=30,
+        s=15,
         edgecolor="black",
-        alpha=0.8
+        alpha=0.8,
+        ax=ax
     )
     
-    plt.title(f'Timepoint {tp}\nDots: Fixed clustering from tp=={fixed_tp} (good=green, bad=red)', fontsize=5)
-    plt.xlabel(f'{required_locations[0]} Score',fontsize=12)
-    plt.ylabel(f'{required_locations[1]} Score',fontsize=12)
-    plt.xlim(0, 150)
-    plt.ylim(0, 150)
+    ax.set_title(f'Timepoint {tp}', fontsize=5)
+    ax.set_xlabel('Lex Score', fontsize=12)
+    # Set y-axis label only for the first subplot to avoid redundancy
+    if ax == axes[0]:
+        ax.set_ylabel('Uex Score', fontsize=12)
+    else:
+        ax.set_ylabel('')
     
-    # Add legend for the fixed clusters (dots)
-    legend_fixed = plt.legend(title='Fixed Cluster', bbox_to_anchor=(1.05, 1), loc='upper left',fontsize=12)
-    plt.gca().add_artist(legend_fixed)
-    
-    plt.tight_layout()
-    
-    # Save the figure in SVG and PNG formats in the figures folder
-    plt.savefig(os.path.join(figures_dir, f'timepoint_{tp}_scatter.svg'))
-    plt.savefig(os.path.join(figures_dir, f'timepoint_{tp}_scatter.png'))
-    
-    plt.show()
+    ax.set_xlim(0, x_lim)
+    ax.set_ylim(0, y_lim)
+    ax.set_xticks(x_ticks)
+    ax.set_xticklabels(x_tick_labels)
+    ax.set_yticks(y_ticks)
+    ax.set_yticklabels(y_tick_labels)
+    ax.legend().set_visible(False)
+
+plt.tight_layout()
+# Save the combined subplots figure
+plt.savefig(os.path.join(figures_dir, 'timepoints_scatter.svg'))
+plt.savefig(os.path.join(figures_dir, 'timepoints_scatter.png'))
+plt.show()
 
 # Combine the distance measurements across all timepoints into a single DataFrame
 distance_df = pd.concat(all_distances, ignore_index=True)
