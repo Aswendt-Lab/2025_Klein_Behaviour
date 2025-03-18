@@ -24,7 +24,7 @@ os.makedirs(figures_dir_recovery, exist_ok=True)
 # -----------------------------
 # Read in the CSV file with distance data
 # -----------------------------
-csv_file = os.path.join(output_dir, 'behavioral_data_with_distance.csv')
+csv_file = os.path.join(output_dir, 'behavioral_data_with_distance_FM.csv')
 df = pd.read_csv(csv_file)
 df = df.dropna().reset_index(drop=True)
 

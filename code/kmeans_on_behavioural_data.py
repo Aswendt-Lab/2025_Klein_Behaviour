@@ -16,7 +16,7 @@ output_dir = os.path.join(parent_dir, "output")
 figures_dir = os.path.join(output_dir, "figures")
 os.makedirs(figures_dir, exist_ok=True)
 
-csv_file = os.path.join(output_dir, 'behavioral_data_cleaned.csv')
+csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM.csv')
 df = pd.read_csv(csv_file)
 
 # Define the required score locations (order is important for later calculations)
@@ -176,5 +176,5 @@ plt.show()
 distance_df = pd.concat(all_distances, ignore_index=True)
 
 # Save the updated data (with signed distance) to a new CSV file
-distance_csv_file = os.path.join(output_dir, 'behavioral_data_with_distance.csv')
+distance_csv_file = os.path.join(output_dir, 'behavioral_data_with_distance_FM.csv')
 distance_df.to_csv(distance_csv_file, index=False)
