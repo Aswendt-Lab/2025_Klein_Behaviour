@@ -1,0 +1,46 @@
+Stroke Type	Category
+Mediainfarkt	INFARCT
+Kleinhirninfarkt	INFARCT
+ischaemie links	OTHER
+Kleinhirnblutung	BLEEDING
+ICB	BLEEDING
+Bithalamische Infrakte	INFARCT
+Stammganglienblutung	BLEEDING
+Infrakt links	INFARCT
+Atypische intrakranielle Blutung	BLEEDING
+Mediateilinfrakt	INFARCT
+Ponsinfrakt	INFARCT
+Bihemispaehrische ischaemische Infrakte	OTHER
+Basalganglieninfarkt	INFARCT
+Bihemisphaerische Infarkte	INFARCT
+Mediateilinfarkt	INFARCT
+thalamische Infrakte links	INFARCT
+Mediateiinfarkt	INFARCT
+Grenzzoneninfarkt links	INFARCT
+Ponsischaemie	OTHER
+ischaemie rechts	OTHER
+Mediainfarkt rechts	INFARCT
+SAB	BLEEDING
+Ponsinfarkt	INFARCT
+Ischaemie	OTHER
+Hirninfarkt posterior rechts	INFARCT
+Thalamusinfarkt	INFARCT
+Ischaemie links	OTHER
+Infarkt medulla oblongata	INFARCT
+Atypische Blutung	BLEEDING
+Medulla-oblongata Infarkt	INFARCT
+Hirninfarkt a. cerebri media	INFARCT
+Infarkt Capsula interna	INFARCT
+Grenzzoneninfarkt	INFARCT
+Infarkt Mediastromgebiet	INFARCT
+Thalamusblutung	BLEEDING
+Mediainfrakt	INFARCT
+Kleinhirnischaemie	OTHER
+Stammganglieninfarkt	INFARCT
+stammganglieninfarkt	INFARCT
+Anteriorinfarkt	INFARCT
+Bihemisphaerischeinfakrte	INFARCT
+Mediainfarkt (with trailing space)	INFARCT
+Mediaischaemie	OTHER
+Ischaemie rechts	OTHER
+nan	OTHER

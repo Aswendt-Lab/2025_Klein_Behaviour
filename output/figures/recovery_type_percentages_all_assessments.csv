@@ -1,21 +1,21 @@
 Assessment,Recovery_Type,Count,Total,Percentage
-FM-uex,Steady recovery,21,37,56.76
-FM-uex,Steady decline,3,37,8.11
-FM-uex,Early recovery with chronic decline,6,37,16.22
-FM-uex,Late recovery with acute decline,7,37,18.92
-FM-lex,Steady recovery,25,37,67.57
-FM-lex,Steady decline,1,37,2.7
-FM-lex,Early recovery with chronic decline,4,37,10.81
-FM-lex,Late recovery with acute decline,7,37,18.92
-BI,Steady recovery,0,51,0.0
-BI,Steady decline,2,51,3.92
-BI,Early recovery with chronic decline,49,51,96.08
-BI,Late recovery with acute decline,0,51,0.0
-MRS,Steady recovery,1,54,1.85
-MRS,Steady decline,41,54,75.93
-MRS,Early recovery with chronic decline,2,54,3.7
-MRS,Late recovery with acute decline,8,54,14.81
-NIHSS,Steady recovery,0,41,0.0
-NIHSS,Steady decline,28,41,68.29
-NIHSS,Early recovery with chronic decline,4,41,9.76
-NIHSS,Late recovery with acute decline,7,41,17.07
+FM-lex,Steady recovery,25,36,69.44
+FM-lex,Steady decline,0,36,0.0
+FM-lex,Early recovery with chronic decline,4,36,11.11
+FM-lex,Late recovery with acute decline,7,36,19.44
+FM-uex,Steady recovery,21,36,58.33
+FM-uex,Steady decline,3,36,8.33
+FM-uex,Early recovery with chronic decline,6,36,16.67
+FM-uex,Late recovery with acute decline,6,36,16.67
+BI,Steady recovery,32,36,88.89
+BI,Steady decline,0,36,0.0
+BI,Early recovery with chronic decline,3,36,8.33
+BI,Late recovery with acute decline,1,36,2.78
+MRS,Steady recovery,32,36,88.89
+MRS,Steady decline,0,36,0.0
+MRS,Early recovery with chronic decline,2,36,5.56
+MRS,Late recovery with acute decline,1,36,2.78
+NIHSS,Steady recovery,28,36,77.78
+NIHSS,Steady decline,0,36,0.0
+NIHSS,Early recovery with chronic decline,4,36,11.11
+NIHSS,Late recovery with acute decline,3,36,8.33

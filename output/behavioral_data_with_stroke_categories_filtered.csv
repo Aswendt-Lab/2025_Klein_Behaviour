@@ -1,0 +1,260 @@
+record_id,redcap_event_name,tp,score,assessment,stroke_type,recovery_type,stroke_category
+2,t2_followup_arm_1,2,116.0,FM-uex,Mediainfarkt,Late recovery with acute decline,INFARCT
+3,t2_followup_arm_1,2,88.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+4,t2_followup_arm_1,2,117.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+7,t2_followup_arm_1,2,119.0,FM-uex,Kleinhirnblutung,Early recovery with chronic decline,BLEEDING
+8,t2_followup_arm_1,2,119.0,FM-uex,ICB,Early recovery with chronic decline,BLEEDING
+9,t2_followup_arm_1,2,112.0,FM-uex,Mediainfarkt,Steady recovery,INFARCT
+10,t2_followup_arm_1,2,123.0,FM-uex,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT
+12,t2_followup_arm_1,2,124.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+15,t2_followup_arm_1,2,40.0,FM-uex,Mediainfarkt,Steady recovery,INFARCT
+18,t2_followup_arm_1,2,126.0,FM-uex,Infrakt links,Early recovery with chronic decline,INFARCT
+19,t2_followup_arm_1,2,97.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+20,t2_followup_arm_1,2,86.0,FM-uex,ischaemie links,Early recovery with chronic decline,OTHER
+22,t2_followup_arm_1,2,89.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+28,t2_followup_arm_1,2,84.0,FM-uex,Mediateilinfrakt,Steady decline,INFARCT
+31,t2_followup_arm_1,2,96.0,FM-uex,Basalganglieninfarkt,Early recovery with chronic decline,INFARCT
+36,t2_followup_arm_1,2,93.0,FM-uex,Mediateiinfarkt,Early recovery with chronic decline,INFARCT
+40,t2_followup_arm_1,2,126.0,FM-uex,Grenzzoneninfarkt links,Early recovery with chronic decline,INFARCT
+42,t2_followup_arm_1,2,120.0,FM-uex,Ponsischaemie,Steady recovery,OTHER
+45,t2_followup_arm_1,2,77.0,FM-uex,Mediainfarkt rechts,Early recovery with chronic decline,INFARCT
+47,t2_followup_arm_1,2,125.0,FM-uex,ICB,Early recovery with chronic decline,BLEEDING
+49,t2_followup_arm_1,2,85.0,FM-uex,Ponsinfarkt,Steady recovery,INFARCT
+52,t2_followup_arm_2,2,57.0,FM-uex,Ischaemie,Early recovery with chronic decline,OTHER
+53,t2_followup_arm_1,2,60.0,FM-uex,ICB,Early recovery with chronic decline,BLEEDING
+55,t2_followup_arm_1,2,77.0,FM-uex,Mediainfarkt,Steady recovery,INFARCT
+58,t2_followup_arm_1,2,126.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+59,t2_followup_arm_1,2,126.0,FM-uex,Stammganglienblutung,Early recovery with chronic decline,BLEEDING
+62,t2_followup_arm_1,2,126.0,FM-uex,Thalamusinfarkt,Early recovery with chronic decline,INFARCT
+66,t2_followup_arm_1,2,115.0,FM-uex,Ischaemie links,Steady decline,OTHER
+69,t2_followup_arm_1,2,93.0,FM-uex,Infarkt medulla oblongata,Steady decline,INFARCT
+71,t2_followup_arm_1,2,119.0,FM-uex,Mediainfarkt,Steady decline,INFARCT
+72,t2_followup_arm_1,2,49.0,FM-uex,ICB,Early recovery with chronic decline,BLEEDING
+73,t2_followup_arm_1,2,47.0,FM-uex,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+78,t2_followup_arm_1,2,120.0,FM-uex,Hirninfarkt a. cerebri media,Steady decline,INFARCT
+79,t2_followup_arm_1,2,77.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+80,t2_followup_arm_1,2,121.0,FM-uex,Mediainfarkt,Steady decline,INFARCT
+81,t2_followup_arm_1,2,102.0,FM-uex,Ponsinfarkt,Steady decline,INFARCT
+82,t2_followup_arm_1,2,93.0,FM-uex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+85,t2_followup_arm_1,2,94.0,FM-uex,Infarkt Mediastromgebiet,Steady decline,INFARCT
+86,t2_followup_arm_1,2,115.0,FM-uex,Ischaemie links,Steady decline,OTHER
+88,t2_followup_arm_1,2,108.0,FM-uex,Kleinhirninfarkt,Steady decline,INFARCT
+92,t2_followup_arm_1,2,97.0,FM-uex,Mediainfarkt,Steady decline,INFARCT
+95,t2_followup_arm_1,2,83.0,FM-uex,Ponsinfarkt,Steady decline,INFARCT
+100,t2_followup_arm_1,2,126.0,FM-uex,Mediainfarkt,Steady decline,INFARCT
+104,t2_followup_arm_1,2,85.0,FM-uex,Stammganglieninfarkt,Steady decline,INFARCT
+2,t2_followup_arm_1,2,86.0,FM-lex,Mediainfarkt,Late recovery with acute decline,INFARCT
+3,t2_followup_arm_1,2,80.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+4,t2_followup_arm_1,2,85.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+7,t2_followup_arm_1,2,78.0,FM-lex,Kleinhirnblutung,Early recovery with chronic decline,BLEEDING
+8,t2_followup_arm_1,2,86.0,FM-lex,ICB,Early recovery with chronic decline,BLEEDING
+9,t2_followup_arm_1,2,79.0,FM-lex,Mediainfarkt,Steady recovery,INFARCT
+10,t2_followup_arm_1,2,79.0,FM-lex,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT
+12,t2_followup_arm_1,2,82.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+15,t2_followup_arm_1,2,35.0,FM-lex,Mediainfarkt,Steady recovery,INFARCT
+18,t2_followup_arm_1,2,86.0,FM-lex,Infrakt links,Early recovery with chronic decline,INFARCT
+19,t2_followup_arm_1,2,62.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+20,t2_followup_arm_1,2,66.0,FM-lex,ischaemie links,Early recovery with chronic decline,OTHER
+22,t2_followup_arm_1,2,75.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+28,t2_followup_arm_1,2,85.0,FM-lex,Mediateilinfrakt,Steady decline,INFARCT
+31,t2_followup_arm_1,2,85.0,FM-lex,Basalganglieninfarkt,Early recovery with chronic decline,INFARCT
+36,t2_followup_arm_1,2,83.0,FM-lex,Mediateiinfarkt,Early recovery with chronic decline,INFARCT
+40,t2_followup_arm_1,2,86.0,FM-lex,Grenzzoneninfarkt links,Early recovery with chronic decline,INFARCT
+42,t2_followup_arm_1,2,83.0,FM-lex,Ponsischaemie,Steady recovery,OTHER
+45,t2_followup_arm_1,2,79.0,FM-lex,Mediainfarkt rechts,Early recovery with chronic decline,INFARCT
+47,t2_followup_arm_1,2,86.0,FM-lex,ICB,Early recovery with chronic decline,BLEEDING
+49,t2_followup_arm_1,2,78.0,FM-lex,Ponsinfarkt,Steady recovery,INFARCT
+52,t2_followup_arm_2,2,55.0,FM-lex,Ischaemie,Early recovery with chronic decline,OTHER
+53,t2_followup_arm_1,2,79.0,FM-lex,ICB,Early recovery with chronic decline,BLEEDING
+55,t2_followup_arm_1,2,83.0,FM-lex,Mediainfarkt,Steady recovery,INFARCT
+58,t2_followup_arm_1,2,86.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+59,t2_followup_arm_1,2,86.0,FM-lex,Stammganglienblutung,Early recovery with chronic decline,BLEEDING
+62,t2_followup_arm_1,2,86.0,FM-lex,Thalamusinfarkt,Early recovery with chronic decline,INFARCT
+66,t2_followup_arm_1,2,83.0,FM-lex,Ischaemie links,Steady decline,OTHER
+69,t2_followup_arm_1,2,74.0,FM-lex,Infarkt medulla oblongata,Steady decline,INFARCT
+71,t2_followup_arm_1,2,86.0,FM-lex,Mediainfarkt,Steady decline,INFARCT
+72,t2_followup_arm_1,2,52.0,FM-lex,ICB,Early recovery with chronic decline,BLEEDING
+73,t2_followup_arm_1,2,50.0,FM-lex,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+78,t2_followup_arm_1,2,80.0,FM-lex,Hirninfarkt a. cerebri media,Steady decline,INFARCT
+79,t2_followup_arm_1,2,79.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+80,t2_followup_arm_1,2,86.0,FM-lex,Mediainfarkt,Steady decline,INFARCT
+81,t2_followup_arm_1,2,79.0,FM-lex,Ponsinfarkt,Steady decline,INFARCT
+82,t2_followup_arm_1,2,83.0,FM-lex,Mediainfarkt,Early recovery with chronic decline,INFARCT
+85,t2_followup_arm_1,2,70.0,FM-lex,Infarkt Mediastromgebiet,Steady decline,INFARCT
+86,t2_followup_arm_1,2,83.0,FM-lex,Ischaemie links,Steady decline,OTHER
+88,t2_followup_arm_1,2,80.0,FM-lex,Kleinhirninfarkt,Steady decline,INFARCT
+92,t2_followup_arm_1,2,86.0,FM-lex,Mediainfarkt,Steady decline,INFARCT
+95,t2_followup_arm_1,2,47.0,FM-lex,Ponsinfarkt,Steady decline,INFARCT
+100,t2_followup_arm_1,2,86.0,FM-lex,Mediainfarkt,Steady decline,INFARCT
+104,t2_followup_arm_1,2,69.0,FM-lex,Stammganglieninfarkt,Steady decline,INFARCT
+2,t2_followup_arm_1,2,95.0,BI,Mediainfarkt,Late recovery with acute decline,INFARCT
+3,t2_followup_arm_1,2,85.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+4,t2_followup_arm_1,2,85.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+7,t2_followup_arm_1,2,95.0,BI,Kleinhirnblutung,Early recovery with chronic decline,BLEEDING
+8,t2_followup_arm_1,2,100.0,BI,ICB,Early recovery with chronic decline,BLEEDING
+9,t2_followup_arm_1,2,85.0,BI,Mediainfarkt,Steady recovery,INFARCT
+10,t2_followup_arm_1,2,90.0,BI,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT
+12,t2_followup_arm_1,2,85.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+14,t2_followup_arm_1,2,0.0,BI,Mediainfarkt,Steady recovery,INFARCT
+15,t2_followup_arm_1,2,15.0,BI,Mediainfarkt,Steady recovery,INFARCT
+17,t2_followup_arm_1,2,40.0,BI,ischaemie links,Early recovery with chronic decline,OTHER
+18,t2_followup_arm_1,2,95.0,BI,Infrakt links,Early recovery with chronic decline,INFARCT
+19,t2_followup_arm_1,2,25.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+20,t2_followup_arm_1,2,95.0,BI,ischaemie links,Early recovery with chronic decline,OTHER
+21,t2_followup_arm_1,2,25.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+22,t2_followup_arm_1,2,100.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+25,t2_followup_arm_1,2,65.0,BI,Mediainfarkt,Steady recovery,INFARCT
+28,t2_followup_arm_1,2,85.0,BI,Mediateilinfrakt,Steady decline,INFARCT
+31,t2_followup_arm_1,2,100.0,BI,Basalganglieninfarkt,Early recovery with chronic decline,INFARCT
+33,t2_followup_arm_1,2,100.0,BI,Bihemisphaerische Infarkte,Early recovery with chronic decline,INFARCT
+34,t2_followup_arm_1,2,100.0,BI,Mediateilinfarkt,Early recovery with chronic decline,INFARCT
+35,t2_followup_arm_1,2,20.0,BI,thalamische Infrakte links,Early recovery with chronic decline,INFARCT
+36,t2_followup_arm_1,2,100.0,BI,Mediateiinfarkt,Early recovery with chronic decline,INFARCT
+40,t2_followup_arm_1,2,100.0,BI,Grenzzoneninfarkt links,Early recovery with chronic decline,INFARCT
+41,t2_followup_arm_1,2,0.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+42,t2_followup_arm_1,2,95.0,BI,Ponsischaemie,Steady recovery,OTHER
+45,t2_followup_arm_1,2,100.0,BI,Mediainfarkt rechts,Early recovery with chronic decline,INFARCT
+47,t2_followup_arm_1,2,100.0,BI,ICB,Early recovery with chronic decline,BLEEDING
+49,t2_followup_arm_1,2,85.0,BI,Ponsinfarkt,Steady recovery,INFARCT
+51,t2_followup_arm_1,2,80.0,BI,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+52,t2_followup_arm_2,2,35.0,BI,Ischaemie,Early recovery with chronic decline,OTHER
+53,t2_followup_arm_1,2,45.0,BI,ICB,Early recovery with chronic decline,BLEEDING
+55,t2_followup_arm_1,2,80.0,BI,Mediainfarkt,Steady recovery,INFARCT
+58,t2_followup_arm_1,2,100.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+59,t2_followup_arm_1,2,100.0,BI,Stammganglienblutung,Early recovery with chronic decline,BLEEDING
+60,t2_followup_arm_1,2,0.0,BI,Hirninfarkt posterior rechts,Steady recovery,INFARCT
+61,t2_followup_arm_2,2,70.0,BI,Ischaemie,Early recovery with chronic decline,OTHER
+62,t2_followup_arm_1,2,85.0,BI,Thalamusinfarkt,Early recovery with chronic decline,INFARCT
+66,t2_followup_arm_1,2,95.0,BI,Ischaemie links,Steady decline,OTHER
+67,t2_followup_arm_2,2,45.0,BI,Ischaemie,Steady decline,OTHER
+68,t2_followup_arm_1,2,95.0,BI,Mediainfarkt,Steady decline,INFARCT
+69,t2_followup_arm_1,2,75.0,BI,Infarkt medulla oblongata,Steady decline,INFARCT
+71,t2_followup_arm_1,2,100.0,BI,Mediainfarkt,Steady decline,INFARCT
+72,t2_followup_arm_1,2,45.0,BI,ICB,Early recovery with chronic decline,BLEEDING
+73,t2_followup_arm_1,2,35.0,BI,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+78,t2_followup_arm_1,2,100.0,BI,Hirninfarkt a. cerebri media,Steady decline,INFARCT
+79,t2_followup_arm_1,2,50.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+80,t2_followup_arm_1,2,100.0,BI,Mediainfarkt,Steady decline,INFARCT
+81,t2_followup_arm_1,2,100.0,BI,Ponsinfarkt,Steady decline,INFARCT
+82,t2_followup_arm_1,2,100.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+85,t2_followup_arm_1,2,70.0,BI,Infarkt Mediastromgebiet,Steady decline,INFARCT
+86,t2_followup_arm_1,2,100.0,BI,Ischaemie links,Steady decline,OTHER
+87,t2_followup_arm_1,2,25.0,BI,Thalamusblutung,Early recovery with chronic decline,BLEEDING
+88,t2_followup_arm_1,2,45.0,BI,Kleinhirninfarkt,Steady decline,INFARCT
+89,t2_followup_arm_1,2,30.0,BI,Ponsinfarkt,Steady decline,INFARCT
+92,t2_followup_arm_1,2,100.0,BI,Mediainfarkt,Steady decline,INFARCT
+94,t2_followup_arm_1,2,25.0,BI,Mediainfarkt,Early recovery with chronic decline,INFARCT
+113,t2_followup_arm_1,2,2.0,BI,Mediateilinfarkt,Steady decline,INFARCT
+2,t2_followup_arm_1,2,0.0,MRS,Mediainfarkt,Late recovery with acute decline,INFARCT
+3,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+4,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+7,t2_followup_arm_1,2,1.0,MRS,Kleinhirnblutung,Early recovery with chronic decline,BLEEDING
+8,t2_followup_arm_1,2,1.0,MRS,ICB,Early recovery with chronic decline,BLEEDING
+9,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Steady recovery,INFARCT
+10,t2_followup_arm_1,2,2.0,MRS,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT
+12,t2_followup_arm_1,2,3.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+14,t2_followup_arm_1,2,5.0,MRS,Mediainfarkt,Steady recovery,INFARCT
+15,t2_followup_arm_1,2,5.0,MRS,Mediainfarkt,Steady recovery,INFARCT
+17,t2_followup_arm_1,2,3.0,MRS,ischaemie links,Early recovery with chronic decline,OTHER
+18,t2_followup_arm_1,2,2.0,MRS,Infrakt links,Early recovery with chronic decline,INFARCT
+19,t2_followup_arm_1,2,4.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+20,t2_followup_arm_1,2,3.0,MRS,ischaemie links,Early recovery with chronic decline,OTHER
+21,t2_followup_arm_1,2,4.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+22,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+25,t2_followup_arm_1,2,3.0,MRS,Mediainfarkt,Steady recovery,INFARCT
+28,t2_followup_arm_1,2,1.0,MRS,Mediateilinfrakt,Steady decline,INFARCT
+31,t2_followup_arm_1,2,2.0,MRS,Basalganglieninfarkt,Early recovery with chronic decline,INFARCT
+33,t2_followup_arm_1,2,1.0,MRS,Bihemisphaerische Infarkte,Early recovery with chronic decline,INFARCT
+34,t2_followup_arm_1,2,2.0,MRS,Mediateilinfarkt,Early recovery with chronic decline,INFARCT
+35,t2_followup_arm_1,2,4.0,MRS,thalamische Infrakte links,Early recovery with chronic decline,INFARCT
+36,t2_followup_arm_1,2,2.0,MRS,Mediateiinfarkt,Early recovery with chronic decline,INFARCT
+38,t2_followup_arm_1,2,4.0,MRS,ICB,Steady recovery,BLEEDING
+40,t2_followup_arm_1,2,1.0,MRS,Grenzzoneninfarkt links,Early recovery with chronic decline,INFARCT
+41,t2_followup_arm_1,2,5.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+42,t2_followup_arm_1,2,2.0,MRS,Ponsischaemie,Steady recovery,OTHER
+43,t2_followup_arm_1,2,5.0,MRS,ischaemie rechts,Early recovery with chronic decline,OTHER
+45,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt rechts,Early recovery with chronic decline,INFARCT
+47,t2_followup_arm_1,2,1.0,MRS,ICB,Early recovery with chronic decline,BLEEDING
+49,t2_followup_arm_1,2,3.0,MRS,Ponsinfarkt,Steady recovery,INFARCT
+51,t2_followup_arm_1,2,3.0,MRS,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+52,t2_followup_arm_2,2,4.0,MRS,Ischaemie,Early recovery with chronic decline,OTHER
+53,t2_followup_arm_1,2,3.0,MRS,ICB,Early recovery with chronic decline,BLEEDING
+55,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Steady recovery,INFARCT
+58,t2_followup_arm_1,2,1.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+59,t2_followup_arm_1,2,1.0,MRS,Stammganglienblutung,Early recovery with chronic decline,BLEEDING
+60,t2_followup_arm_1,2,5.0,MRS,Hirninfarkt posterior rechts,Steady recovery,INFARCT
+61,t2_followup_arm_2,2,3.0,MRS,Ischaemie,Early recovery with chronic decline,OTHER
+62,t2_followup_arm_1,2,3.0,MRS,Thalamusinfarkt,Early recovery with chronic decline,INFARCT
+66,t2_followup_arm_1,2,2.0,MRS,Ischaemie links,Steady decline,OTHER
+67,t2_followup_arm_2,2,3.0,MRS,Ischaemie,Steady decline,OTHER
+68,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Steady decline,INFARCT
+69,t2_followup_arm_1,2,3.0,MRS,Infarkt medulla oblongata,Steady decline,INFARCT
+71,t2_followup_arm_1,2,1.0,MRS,Mediainfarkt,Steady decline,INFARCT
+72,t2_followup_arm_1,2,4.0,MRS,ICB,Early recovery with chronic decline,BLEEDING
+73,t2_followup_arm_1,2,4.0,MRS,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+78,t2_followup_arm_1,2,3.0,MRS,Hirninfarkt a. cerebri media,Steady decline,INFARCT
+79,t2_followup_arm_1,2,3.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+80,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Steady decline,INFARCT
+81,t2_followup_arm_1,2,3.0,MRS,Ponsinfarkt,Steady decline,INFARCT
+82,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+85,t2_followup_arm_1,2,3.0,MRS,Infarkt Mediastromgebiet,Steady decline,INFARCT
+86,t2_followup_arm_1,2,1.0,MRS,Ischaemie links,Steady decline,OTHER
+87,t2_followup_arm_1,2,4.0,MRS,Thalamusblutung,Early recovery with chronic decline,BLEEDING
+88,t2_followup_arm_1,2,3.0,MRS,Kleinhirninfarkt,Steady decline,INFARCT
+89,t2_followup_arm_1,2,5.0,MRS,Ponsinfarkt,Steady decline,INFARCT
+92,t2_followup_arm_1,2,2.0,MRS,Mediainfarkt,Steady decline,INFARCT
+94,t2_followup_arm_1,2,4.0,MRS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+95,t2_followup_arm_1,2,4.0,MRS,Ponsinfarkt,Steady decline,INFARCT
+98,t2_followup_arm_1,2,4.0,MRS,Bihemisphaerische Infarkte,Steady decline,INFARCT
+100,t2_followup_arm_1,2,1.0,MRS,Mediainfarkt,Steady decline,INFARCT
+101,t2_followup_arm_1,2,5.0,MRS,Mediainfarkt,Steady decline,INFARCT
+104,t2_followup_arm_1,2,3.0,MRS,Stammganglieninfarkt,Steady decline,INFARCT
+113,t2_followup_arm_1,2,4.0,MRS,Mediateilinfarkt,Steady decline,INFARCT
+2,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Late recovery with acute decline,INFARCT
+3,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+4,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+7,t2_followup_arm_1,2,0.0,NIHSS,Kleinhirnblutung,Early recovery with chronic decline,BLEEDING
+8,t2_followup_arm_1,2,0.0,NIHSS,ICB,Early recovery with chronic decline,BLEEDING
+9,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Steady recovery,INFARCT
+10,t2_followup_arm_1,2,0.0,NIHSS,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT
+12,t2_followup_arm_1,2,0.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+14,t2_followup_arm_1,2,13.0,NIHSS,Mediainfarkt,Steady recovery,INFARCT
+15,t2_followup_arm_1,2,13.0,NIHSS,Mediainfarkt,Steady recovery,INFARCT
+18,t2_followup_arm_1,2,0.0,NIHSS,Infrakt links,Early recovery with chronic decline,INFARCT
+19,t2_followup_arm_1,2,7.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+20,t2_followup_arm_1,2,4.0,NIHSS,ischaemie links,Early recovery with chronic decline,OTHER
+22,t2_followup_arm_1,2,3.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+28,t2_followup_arm_1,2,2.0,NIHSS,Mediateilinfrakt,Steady decline,INFARCT
+31,t2_followup_arm_1,2,1.0,NIHSS,Basalganglieninfarkt,Early recovery with chronic decline,INFARCT
+34,t2_followup_arm_1,2,7.0,NIHSS,Mediateilinfarkt,Early recovery with chronic decline,INFARCT
+36,t2_followup_arm_1,2,0.0,NIHSS,Mediateiinfarkt,Early recovery with chronic decline,INFARCT
+40,t2_followup_arm_1,2,0.0,NIHSS,Grenzzoneninfarkt links,Early recovery with chronic decline,INFARCT
+41,t2_followup_arm_1,2,18.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+42,t2_followup_arm_1,2,0.0,NIHSS,Ponsischaemie,Steady recovery,OTHER
+45,t2_followup_arm_1,2,6.0,NIHSS,Mediainfarkt rechts,Early recovery with chronic decline,INFARCT
+47,t2_followup_arm_1,2,0.0,NIHSS,ICB,Early recovery with chronic decline,BLEEDING
+49,t2_followup_arm_1,2,3.0,NIHSS,Ponsinfarkt,Steady recovery,INFARCT
+52,t2_followup_arm_2,2,8.0,NIHSS,Ischaemie,Early recovery with chronic decline,OTHER
+53,t2_followup_arm_1,2,5.0,NIHSS,ICB,Early recovery with chronic decline,BLEEDING
+55,t2_followup_arm_1,2,7.0,NIHSS,Mediainfarkt,Steady recovery,INFARCT
+58,t2_followup_arm_1,2,3.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+59,t2_followup_arm_1,2,0.0,NIHSS,Stammganglienblutung,Early recovery with chronic decline,BLEEDING
+62,t2_followup_arm_1,2,1.0,NIHSS,Thalamusinfarkt,Early recovery with chronic decline,INFARCT
+66,t2_followup_arm_1,2,1.0,NIHSS,Ischaemie links,Steady decline,OTHER
+69,t2_followup_arm_1,2,2.0,NIHSS,Infarkt medulla oblongata,Steady decline,INFARCT
+71,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Steady decline,INFARCT
+72,t2_followup_arm_1,2,5.0,NIHSS,ICB,Early recovery with chronic decline,BLEEDING
+73,t2_followup_arm_1,2,8.0,NIHSS,Ponsinfarkt,Early recovery with chronic decline,INFARCT
+78,t2_followup_arm_1,2,2.0,NIHSS,Hirninfarkt a. cerebri media,Steady decline,INFARCT
+79,t2_followup_arm_1,2,8.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+80,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Steady decline,INFARCT
+81,t2_followup_arm_1,2,0.0,NIHSS,Ponsinfarkt,Steady decline,INFARCT
+82,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Early recovery with chronic decline,INFARCT
+85,t2_followup_arm_1,2,3.0,NIHSS,Infarkt Mediastromgebiet,Steady decline,INFARCT
+86,t2_followup_arm_1,2,0.0,NIHSS,Ischaemie links,Steady decline,OTHER
+88,t2_followup_arm_1,2,4.0,NIHSS,Kleinhirninfarkt,Steady decline,INFARCT
+92,t2_followup_arm_1,2,5.0,NIHSS,Mediainfarkt,Steady decline,INFARCT
+95,t2_followup_arm_1,2,6.0,NIHSS,Ponsinfarkt,Steady decline,INFARCT
+98,t2_followup_arm_1,2,4.0,NIHSS,Bihemisphaerische Infarkte,Steady decline,INFARCT
+100,t2_followup_arm_1,2,1.0,NIHSS,Mediainfarkt,Steady decline,INFARCT
+104,t2_followup_arm_1,2,4.0,NIHSS,Stammganglieninfarkt,Steady decline,INFARCT

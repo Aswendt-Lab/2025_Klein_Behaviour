@@ -18,7 +18,7 @@ parent_dir = os.path.dirname(code_dir)
 output_dir = os.path.join(parent_dir, "output")
 figures_dir = os.path.join(output_dir, "figures")
 os.makedirs(figures_dir, exist_ok=True)
-
+input_dir = os.path.join(parent_dir, "input")
 # Create a dedicated folder for individual assessment SVG files
 svg_folder = os.path.join(figures_dir, "assessment_svgs")
 os.makedirs(svg_folder, exist_ok=True)
@@ -27,6 +27,7 @@ os.makedirs(svg_folder, exist_ok=True)
 # Load and update FM data
 ###############################
 csv_file_FM = os.path.join(output_dir, 'behavioral_data_cleaned_FM.csv')
+df_stroketype = pd.read_csv(os.path.join(input_dir, 'Stroke_types.csv'))
 df_FM = pd.read_csv(csv_file_FM)
 # Add a new column "assessment" as 'FM-' concatenated with the 'position' value, then drop 'position'
 df_FM['assessment'] = 'FM-' + df_FM['position']
@@ -48,13 +49,29 @@ csv_file_BI_NIHSS = os.path.join(output_dir, 'behavioral_data_cleaned_BI_MRS_NIH
 df_BI_NIHSS = pd.read_csv(csv_file_BI_NIHSS)
 # (No extra columns are added here)
 
-###############################
-# Stitch the two DataFrames together and save as CSV
-###############################
+# Stitch the two DataFrames together
 df_stitched = pd.concat([df_FM, df_BI_NIHSS], axis=0, ignore_index=True)
-stitched_csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM_BI_MRS_NIHSS_all_asssessment_types.csv')
-df_stitched.to_csv(stitched_csv_file, index=False)
-print(f"Stitched data saved to {stitched_csv_file}")
+
+# Merge the stitched DataFrame with df_stroketype based on "record_id"
+df_merged = pd.merge(df_stitched, df_stroketype, on='record_id', how='left')
+
+# Keep only groups (by record_id and assessment) that have exactly 3 rows
+df_merged = df_merged.groupby(['record_id', 'assessment']).filter(lambda x: len(x) == 3)
+df_merged = df_merged.groupby(['record_id', 'tp']).filter(lambda group: len(group) == 5)
+
+########################################
+# Apply score transformation for MRS and NIHSS
+########################################
+# Create a new column 'adjusted_score'. For MRS and NIHSS, adjust the score; otherwise, keep original.
+def adjust_score(row):
+    if row['assessment'] == 'MRS':
+        return 5 - row['score']
+    elif row['assessment'] == 'NIHSS':
+        return 42 - row['score']
+    else:
+        return row['score']
+
+df_merged['adjusted_score'] = df_merged.apply(adjust_score, axis=1)
 
 ########################################
 # Define recovery type assignment function
@@ -84,6 +101,23 @@ def assign_recovery_type(series):
     else:
         return "Unclassified"
 
+# Ensure the data is sorted by timepoint to have the proper order for each group.
+df_merged = df_merged.sort_values('tp')
+
+# Use groupby-transform to compute the recovery type for each group and assign it to every row,
+# using the adjusted_score for MRS and NIHSS.
+df_merged['recovery_type'] = df_merged.groupby(['record_id', 'assessment'])['adjusted_score'] \
+                                     .transform(assign_recovery_type)
+
+df_merged = df_merged.drop_duplicates()
+# Save the merged DataFrame with the new "recovery_type" column.
+stitched_csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM_BI_MRS_NIHSS_all_asssessment_types.csv')
+df_merged.to_csv(stitched_csv_file, index=False)
+print(f"Stitched and merged data saved to {stitched_csv_file}")
+
+########################################
+# Plotting setup and recovery percentage calculations
+########################################
 # Define line styles and fixed color mapping for recovery types
 line_style_map = {
     "Steady recovery": "-",
@@ -101,25 +135,31 @@ colors = sns.color_palette("Set1", n_colors=4)
 recovery_color_map = dict(zip(recovery_types, colors))
 
 # Set measure and axis labels for plotting
-measure = 'score'
-xlabel = "Time Point (tp)"
+measure = 'adjusted_score'
+xlabel = "Time Point"
 ylabel = "Score"
 
-# Reload the stitched data (or use df_stitched) and ensure 'tp' is categorical
+# Reload the stitched data and ensure 'tp' is categorical
 df_plot = pd.read_csv(stitched_csv_file)
 df_plot['tp'] = df_plot['tp'].astype('category')
 
 # Remove any record_id (subject) that does not have all three timepoints
 df_plot = df_plot.groupby('record_id').filter(lambda x: x['tp'].nunique() == 3)
 
+# Define the desired assessment order and enforce it
+assessment_order = ["FM-lex", "FM-uex", "BI", "MRS", "NIHSS"]
+# Option 1: Reorder the DataFrame using pd.Categorical
+df_plot['assessment'] = pd.Categorical(df_plot['assessment'], categories=assessment_order, ordered=True)
+df_plot = df_plot.sort_values('assessment')
+
+# Get the unique assessments based on our custom order
+assessments = [a for a in assessment_order if a in df_plot['assessment'].unique()]
+n_assess = len(assessments)
+
 # Define figure dimensions: 30 cm wide (converted to inches) and a fixed height per subplot
 cm_to_inch = 0.3937
 fig_width = 30 * cm_to_inch  
-subplot_height = 6 * cm_to_inch  
-
-# Determine unique assessment types and number of subplots
-assessments = df_plot['assessment'].unique()
-n_assess = len(assessments)
+subplot_height = 10 * cm_to_inch  
 
 # Create a figure with one subplot per assessment type (side-by-side)
 fig, axes = plt.subplots(1, n_assess, figsize=(fig_width, subplot_height), dpi=300)
@@ -129,9 +169,13 @@ if n_assess == 1:
 # Prepare a list to accumulate recovery percentages for all assessments
 all_results = []
 
-# Loop over each assessment type to create subplots and compute recovery percentages
 for ax, assess in zip(axes, assessments):
+    # Get subset of data for the current assessment
     df_assess = df_plot[df_plot['assessment'] == assess].copy()
+    
+    # For assessments MRS and NIHSS, the score has already been adjusted.
+    # For consistency, we use 'adjusted_score' throughout.
+    
     # Get all record_ids that have a tp value of 2
     valid_record_ids = df_assess.loc[df_assess['tp'] == 2, 'record_id'].unique()
     # Filter the DataFrame to only include rows with those record_ids
@@ -168,13 +212,17 @@ for ax, assess in zip(axes, assessments):
         color = recovery_color_map.get(recovery_type, "black")
         
         ax.plot(x_vals, y_vals, marker='o', markersize=2, linewidth=1.2,
-                linestyle=line_style, color=color, alpha=0.8)
+                linestyle=line_style, color=color, alpha=0.6)
     
     ax.set_ylim(y_lim_lower, y_lim_upper)
-    ax.set_title(f"Assessment: {assess}", fontsize=10)
-    ax.set_ylabel(ylabel, fontsize=12)
-    ax.tick_params(labelsize=8)
+    ax.set_title(f"{assess}", fontsize=10)
+    # Adjust the y-axis label based on the assessment type
+    if assess in ['MRS', 'NIHSS']:
+        ax.set_ylabel("Max - Score", fontsize=12)
+    else:
+        ax.set_ylabel(ylabel, fontsize=12)
     ax.set_xlabel(xlabel, fontsize=12)
+    ax.tick_params(labelsize=8)
     sns.despine(ax=ax, top=True, right=True)
     
     # Compute recovery percentages for this assessment
@@ -192,8 +240,8 @@ for ax, assess in zip(axes, assessments):
             'Percentage': round(percent, 2)
         })
     
-    # Now, also create and save an individual figure for this assessment as SVG
-    fig_ind, ax_ind = plt.subplots(figsize=(9*cm_to_inch, 9*cm_to_inch), dpi=300)
+    # Now, create and save an individual figure for this assessment as SVG
+    fig_ind, ax_ind = plt.subplots(figsize=(9 * cm_to_inch, 9 * cm_to_inch), dpi=300)
     
     # Plot the same boxplot and spaghetti plot on the individual axis
     sns.boxplot(
@@ -218,8 +266,12 @@ for ax, assess in zip(axes, assessments):
     
     ax_ind.set_ylim(y_lim_lower, y_lim_upper)
     ax_ind.set_title(f"Assessment: {assess}", fontsize=10)
-    ax_ind.set_ylabel(ylabel, fontsize=12)
-    ax_ind.set_xlabel(xlabel, fontsize=12)
+    # Adjust y-axis label for inverted assessments
+    if assess in ['MRS', 'NIHSS']:
+        ax_ind.set_ylabel("Max - Score", fontsize=12)
+    else:
+        ax_ind.set_ylabel(ylabel, fontsize=12)
+    ax_ind.set_xlabel("Time Point", fontsize=12)
     ax_ind.tick_params(labelsize=8)
     sns.despine(ax=ax_ind, top=True, right=True)
     
@@ -231,9 +283,8 @@ for ax, assess in zip(axes, assessments):
 
 plt.tight_layout(rect=[0, 0, 1, 1])
 # Save the combined figure without a legend
-combined_fig_filename = os.path.join(figures_dir, "spaghetti_plots_all_assessments.png")
+combined_fig_filename = os.path.join(figures_dir, "spaghetti_plots_all_assessments.svg")
 plt.savefig(combined_fig_filename, dpi=300)
-#plt.close(fig)
 print(f"Saved combined spaghetti plots at {combined_fig_filename}")
 
 # Save recovery percentages to CSV
