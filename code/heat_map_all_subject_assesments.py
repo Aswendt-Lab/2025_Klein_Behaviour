@@ -1,112 +1,201 @@
 import os
 import pandas as pd
 import numpy as np
-import seaborn as sns
 import plotly.graph_objects as go
-import matplotlib.colors as mcolors
 
-# Suppose df_all has already been loaded from your CSV file.
+###############################
+# Setup directories
+###############################
+code_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(code_dir)
+output_dir = os.path.join(parent_dir, "output")
+figures_dir = os.path.join(output_dir, "figures")
+os.makedirs(figures_dir, exist_ok=True)
+input_dir = os.path.join(parent_dir, "input")
+
+# Create a dedicated folder for individual assessment SVG files
+svg_folder = figures_dir
+os.makedirs(svg_folder, exist_ok=True)
+
+###############################
+# Load and filter data
+###############################
+stitched_csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM_BI_MRS_NIHSS_all_asssessment_types.csv')
+df_all = pd.read_csv(stitched_csv_file)
+
+# Further filter data to only include time point tp == 2
+df_all = df_all[df_all["tp"] == 2]
+
 expected_cols = ['record_id', 'assessment', 'recovery_type']
-assert all(col in df_all.columns for col in expected_cols), "df_all does not contain all expected columns."
 
-# Define the ordering of recovery types.
-recovery_types = sorted(df_all['recovery_type'].unique())
-
-# Create the color palette using Seaborn.
-colors = sns.color_palette("Set1", n_colors=len(recovery_types))
-# Convert the colors to hex format using matplotlib.
-colors_hex = [mcolors.to_hex(c) for c in colors]
-
-# Map recovery types to colors.
-recovery_color_map = dict(zip(recovery_types, colors_hex))
+# Fixed recovery color mapping in the given order.
+recovery_color_map = {
+    'Steady recovery': '#e41a1c',
+    'Steady decline': '#377eb8',
+    'Early recovery with chronic decline': '#4daf4a',
+    'Late recovery with acute decline': '#984ea3'
+}
 print("Recovery Color Map:", recovery_color_map)
+
+# Use the order provided by the fixed dictionary.
+recovery_types = list(recovery_color_map.keys())
+discrete_colors_hex = list(recovery_color_map.values())
 
 # Map each recovery type to a numeric code for the heatmap.
 numeric_map = {rt: i for i, rt in enumerate(recovery_types)}
 df_all['recovery_numeric'] = df_all['recovery_type'].map(numeric_map)
 
 # Drop duplicate rows and any rows with NaN values.
-df_all = df_all.drop_duplicates()
-df_all = df_all.dropna()
+df_all = df_all.drop_duplicates().dropna()
 
-# Reset the index to create a unique identifier for each row.
-df_all = df_all.reset_index(drop=True)
-df_all['unique_id'] = df_all.index
+###############################
+# Add stroke category information
+###############################
+def categorize_stroke(stroke_str):
+    # Handle missing or non-string values: default to INFARCT
+    if not isinstance(stroke_str, str):
+        return "INFARCT"
+    
+    stroke_lower = stroke_str.lower().strip()
+    
+    # Check for bleeding markers first
+    if "blutung" in stroke_lower or stroke_lower in ["icb", "sab"]:
+        return "BLEEDING"
+    
+    # Check for ischaemia markers - now categorized as INFARCT
+    if "ischaem" in stroke_lower:
+        return "INFARCT"
+    
+    # Check for infarct markers
+    if "infrakt" in stroke_lower or "infarkt" in stroke_lower:
+        return "INFARCT"
+    
+    # Default to INFARCT if nothing matches
+    return "INFARCT"
 
-# Reorder the assessment columns according to the specified order.
+# Create new column based on stroke_type mapping
+df_all["stroke_category"] = df_all["stroke_type"].apply(categorize_stroke)
+
+###############################
+# Pivot data for heatmap
+###############################
 assessment_order = ["FM-lex", "FM-uex", "BI", "MRS", "NIHSS"]
-# Pivot the DataFrame using the unique identifier as the index.
-heatmap_data = df_all.pivot(index='unique_id', columns='assessment', values='recovery_numeric')
-# Reindex the pivoted table to enforce the desired order of assessment columns.
+
+# Pivot the DataFrame with record_id as the index.
+heatmap_data = df_all.pivot(index='record_id', columns='assessment', values='recovery_numeric')
 heatmap_data = heatmap_data.reindex(columns=assessment_order)
-
-# Drop rows with any NaN values in the assessment columns
 heatmap_data = heatmap_data.dropna(subset=assessment_order)
+heatmap_data.index = heatmap_data.index.astype(str)
 
-# Create a custom discrete colorscale for Plotly.
-n = len(recovery_types)
+###############################
+# Update record ID labels based on stroke category
+###############################
+# Create a helper DataFrame for stroke category per record.
+stroke_info = df_all[['record_id', 'stroke_category']].drop_duplicates().set_index('record_id')
+stroke_info.index = stroke_info.index.astype(str)
+# Filter stroke_info to only include record_ids present in heatmap_data.
+stroke_info = stroke_info.loc[heatmap_data.index]
+# Create new labels by prefixing with "B" for BLEEDING and "I" for INFARCT.
+stroke_info['record_label'] = stroke_info.index.to_series().copy()
+stroke_info.loc[stroke_info['stroke_category'] == "BLEEDING", 'record_label'] = "B" + stroke_info.loc[stroke_info['stroke_category'] == "BLEEDING", 'record_label']
+stroke_info.loc[stroke_info['stroke_category'] == "INFARCT", 'record_label'] = "I" + stroke_info.loc[stroke_info['stroke_category'] == "INFARCT", 'record_label']
+
+###############################
+# Sort records based on stroke_category
+###############################
+# This sorts the record IDs (used as x-ticks in the flipped heatmap) based on stroke_category.
+sorted_index = stroke_info.sort_values("stroke_category").index
+heatmap_data = heatmap_data.reindex(sorted_index)
+stroke_info = stroke_info.reindex(sorted_index)
+
+###############################
+# Create discrete colorscale for Plotly heatmap
+###############################
+N = len(recovery_types)
 colorscale = []
-for i, color in enumerate(colors_hex):
-    lower_bound = (i - 0.5) / (n - 1) if i > 0 else 0.0
-    upper_bound = (i + 0.5) / (n - 1) if i < n - 1 else 1.0
-    colorscale.append([lower_bound, color])
-    colorscale.append([upper_bound, color])
+for i, color in enumerate(discrete_colors_hex):
+    # Calculate normalized boundaries for each discrete color.
+    left = i / N
+    right = (i + 1) / N
+    colorscale.extend([[left, color], [right, color]])
 
-# Create the heatmap with xgap and ygap for separation.
-# Remove the default colorbar by setting showscale=False.
-fig = go.Figure(data=go.Heatmap(
-    z=heatmap_data.values,
-    x=heatmap_data.columns,
-    y=heatmap_data.index,
-    colorscale=colorscale,
-    zmin=0,
-    zmax=n-1,
-    xgap=2,  # gap between columns (in pixels)
-    ygap=2,  # gap between rows (in pixels)
-    showscale=False  # drop the built-in colorbar
-))
+###############################
+# Create text annotations for each cell based on recovery type symbols
+###############################
+# Define the symbol mapping for each recovery type.
+# Note: escape backslashes properly.
+recovery_symbol_map = {
+    'Steady recovery': '/',
+    'Steady decline': '\\',
+    'Early recovery with chronic decline': '/\\',
+    'Late recovery with acute decline': '\\/'
+}
 
-# Add custom dummy scatter traces for the legend.
-for rt in recovery_types:
-    fig.add_trace(go.Scatter(
-         x=[None],
-         y=[None],
-         mode='markers',
-         marker=dict(size=10, color=recovery_color_map[rt]),
-         legendgroup=rt,
-         showlegend=True,
-         name=rt
-    ))
+# Create a reverse mapping from numeric code to symbol.
+symbol_mapping = {numeric_map[rt]: recovery_symbol_map[rt] for rt in recovery_types}
 
-# Create a mapping from the unique_id to the original record_id.
-unique_id_to_record_id = df_all.set_index('unique_id')['record_id'].to_dict()
+# Create a matrix of text annotations with the same shape as heatmap_data.
+text_matrix = heatmap_data.applymap(lambda x: symbol_mapping.get(x, ''))
 
-# Update the layout with axis titles, custom legend location, new dimensions,
-# and update y-axis to show every tick with the original record_id.
+###############################
+# Transpose data to flip x and y axes
+###############################
+# Now x-axis will be record IDs and y-axis will be assessments.
+heatmap_data_T = heatmap_data.T
+text_matrix_T = text_matrix.T
+
+###############################
+# Create and display heatmap using Plotly (with flipped axes)
+###############################
+fig = go.Figure(
+    data=go.Heatmap(
+        z=heatmap_data_T.values,
+        x=heatmap_data_T.columns,   # x-axis: record IDs
+        y=heatmap_data_T.index,     # y-axis: assessments
+        colorscale=colorscale,      # use the discrete colorscale
+        xgap=1,
+        ygap=1,
+        showscale=False,
+        text=text_matrix_T.values,  # text annotations for each cell
+        texttemplate="%{text}",      # display the text annotations
+        colorbar=dict(
+            title="Recovery Type Code",
+            tickmode='array',
+            tickvals=list(range(N)),
+            ticktext=recovery_types
+        ),
+        zmin=-0.5,
+        zmax=N - 0.5
+    )
+)
+
+# Update layout: x-axis now corresponds to record IDs (with stroke labels) and y-axis to assessments.
 fig.update_layout(
-    title='Recovery Type Heatmap',
-    xaxis_title='Assessment',
-    yaxis_title='Record ID',
+    title="Recovery Type Heatmap (Flipped Axes, Sorted by Stroke Category)",
+    xaxis_title="Record ID",
+    yaxis_title="Assessment",
+    xaxis=dict(
+        tickmode='array',
+        tickvals=list(heatmap_data_T.columns),
+        ticktext=stroke_info['record_label'].tolist(),
+        side='top',          # Place x-axis ticks on the top
+        tickangle=50         # Rotate x-axis ticks by 10 degrees
+    ),
     yaxis=dict(
-         autorange='reversed',
-         tickmode='array',
-         tickvals=list(heatmap_data.index),
-         ticktext=[unique_id_to_record_id[i] for i in heatmap_data.index]
+        tickmode='array',
+        tickvals=assessment_order,
+        ticktext=assessment_order
     ),
-    legend=dict(
-         orientation="v",
-         x=1.05,  # places legend outside to the right
-         y=1,
-         title="Recovery Type"
-    ),
-    height=800,  # taller plot
-    width=600    # narrower plot
+    template='plotly_white',
+    width=750,   # Increase width for horizontal orientation
+    height=300
 )
 
 # Display the figure.
-fig.show(renderer='browser')
+fig.show(renderer='png')
 
 # Optionally, save the figure to your svg folder.
-svg_folder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "output", "figures", "heatmap")
+svg_folder = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
+                          "output", "figures", "heatmap")
 os.makedirs(svg_folder, exist_ok=True)
 fig.write_image(os.path.join(svg_folder, "recovery_type_heatmap.svg"))

@@ -19,6 +19,22 @@ os.makedirs(figures_dir, exist_ok=True)
 csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM.csv')
 df = pd.read_csv(csv_file)
 
+# Group the DataFrame by 'record_id' and 'position'
+groups = df.groupby(['record_id', 'position'])
+
+# Filter groups with exactly 3 rows
+df_valid = groups.filter(lambda x: len(x) == 3)
+
+# Filter groups with not exactly 3 rows
+df_removed = groups.filter(lambda x: len(x) != 3)
+
+# Save the removed groups to a temporary CSV file
+temp_csv_path = os.path.join(output_dir, "removed_groups_temp.csv")
+df_removed.to_csv(temp_csv_path, index=False)
+
+# If you want to update df to be only the valid rows:
+df = df_valid
+
 # Define the required score locations (order is important for later calculations)
 required_locations = ['uex', 'lex']
 
@@ -150,7 +166,7 @@ for ax, tp in zip(axes, timepoints):
         ax=ax
     )
     
-    ax.set_title(f'Timepoint {tp}', fontsize=5)
+    #ax.set_title(f'Timepoint {tp}', fontsize=12)
     ax.set_xlabel('Lex Score', fontsize=12)
     # Set y-axis label only for the first subplot to avoid redundancy
     if ax == axes[0]:

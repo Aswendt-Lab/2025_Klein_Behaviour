@@ -9,6 +9,7 @@ import os
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import matplotlib.colors as mcolors
 
 ###############################
 # Setup directories
@@ -110,10 +111,42 @@ df_merged['recovery_type'] = df_merged.groupby(['record_id', 'assessment'])['adj
                                      .transform(assign_recovery_type)
 
 df_merged = df_merged.drop_duplicates()
-# Save the merged DataFrame with the new "recovery_type" column.
+
+########################################
+# Add stroke category information
+########################################
+def categorize_stroke(stroke_str):
+    # Handle missing or non-string values: default to INFARCT
+    if not isinstance(stroke_str, str):
+        return "INFARCT"
+    
+    stroke_lower = stroke_str.lower().strip()
+    
+    # Check for bleeding markers first
+    if "blutung" in stroke_lower or stroke_lower in ["icb", "sab"]:
+        return "BLEEDING"
+    
+    # Check for ischaemia markers - now categorized as INFARCT
+    if "ischaem" in stroke_lower:
+        return "INFARCT"
+    
+    # Check for infarct markers
+    if "infrakt" in stroke_lower or "infarkt" in stroke_lower:
+        return "INFARCT"
+    
+    # Default to INFARCT if nothing matches
+    return "INFARCT"
+
+# Create new column based on stroke_type mapping
+df_merged["stroke_category"] = df_merged["stroke_type"].apply(categorize_stroke)
+
+########################################
+# Save the merged DataFrame with the new "recovery_type" and "stroke_category" columns
+########################################
 stitched_csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM_BI_MRS_NIHSS_all_asssessment_types.csv')
 df_merged.to_csv(stitched_csv_file, index=False)
 print(f"Stitched and merged data saved to {stitched_csv_file}")
+
 
 ########################################
 # Plotting setup and recovery percentage calculations
@@ -132,6 +165,8 @@ recovery_types = [
     "Late recovery with acute decline"
 ]
 colors = sns.color_palette("Set1", n_colors=4)
+colors = [mcolors.to_hex(color) for color in colors]
+
 recovery_color_map = dict(zip(recovery_types, colors))
 
 # Set measure and axis labels for plotting
@@ -159,7 +194,7 @@ n_assess = len(assessments)
 # Define figure dimensions: 30 cm wide (converted to inches) and a fixed height per subplot
 cm_to_inch = 0.3937
 fig_width = 30 * cm_to_inch  
-subplot_height = 10 * cm_to_inch  
+subplot_height = 8.5 * cm_to_inch  
 
 # Create a figure with one subplot per assessment type (side-by-side)
 fig, axes = plt.subplots(1, n_assess, figsize=(fig_width, subplot_height), dpi=300)
