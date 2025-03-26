@@ -1,13 +1,11 @@
 import os
 import pandas as pd
 import numpy as np
-import plotly.graph_objects as go
-from plotly.subplots import make_subplots
+import matplotlib.pyplot as plt
 import seaborn as sns
-import matplotlib.colors as mcolors
 
 ###############################
-# Setup directories
+# Setup directories and load data
 ###############################
 code_dir = os.path.dirname(os.path.abspath(__file__))
 parent_dir = os.path.dirname(code_dir)
@@ -40,7 +38,6 @@ df_all['adjusted_score'] = df_all.apply(adjust_score, axis=1)
 ###############################
 # Data preparation: time point ordering and subject filtering
 ###############################
-# Ensure that 'tp' is treated as a categorical variable (ordered by its natural order)
 df_all['tp'] = pd.Categorical(df_all['tp'], categories=sorted(df_all['tp'].unique()), ordered=True)
 
 # Keep only subjects that have exactly three time points
@@ -49,7 +46,7 @@ valid_ids = subject_counts[subject_counts == 3].index
 df_all = df_all[df_all['record_id'].isin(valid_ids)]
 
 ###############################
-# Define assessment order (kept as in original code)
+# Define assessment order and stroke mappings
 ###############################
 assessment_order = ["FM-lex", "FM-uex", "BI", "MRS", "NIHSS"]
 df_all['assessment'] = pd.Categorical(df_all['assessment'], categories=assessment_order, ordered=True)
@@ -57,105 +54,82 @@ df_all = df_all.sort_values('assessment')
 assessments = [a for a in assessment_order if a in df_all['assessment'].unique()]
 n_assess = len(assessments)
 
-###############################
 # Define stroke category line style and color mappings
-###############################
-# Assume two possible stroke categories: e.g., "INFARCT" and "BLEEDING"
-# (If there are more, you can expand these dictionaries accordingly)
 line_style_map = {
     "INFARCT": "solid",
-    "BLEEDING": "dash"
+    "BLEEDING": "dashed"  # Matplotlib recognizes 'dashed' (or '--')
 }
-# Choose two colors using seaborn's Set1 palette
-palette = sns.color_palette("Set1", n_colors=2)
 stroke_color_map = {
-    "INFARCT": mcolors.to_hex(palette[0]),
-    "BLEEDING": mcolors.to_hex(palette[1])
+    "INFARCT": "#4d4d4d",  # gray
+    "BLEEDING": "#e41a1c"   # red
 }
 
-###############################
-# Create Plotly subplots for each assessment
-###############################
-fig = make_subplots(rows=1, cols=n_assess, subplot_titles=assessments)
-
-# For x-axis, create a mapping from the categorical time points to numeric positions.
+# Get ordered time points for the x-axis
 tp_categories = list(df_all['tp'].cat.categories)
-x_positions = {tp: i for i, tp in enumerate(tp_categories)}
 
-for col, assess in enumerate(assessments, start=1):
-    # Get the data for the current assessment
+###############################
+# Define figure dimensions and create subplots
+###############################
+cm_to_inch = 0.3937
+fig_width = 30 * cm_to_inch  
+subplot_height = 8.5 * cm_to_inch  
+
+fig, axes = plt.subplots(1, n_assess, figsize=(fig_width, subplot_height), dpi=300)
+# Ensure axes is iterable when only one subplot exists
+if n_assess == 1:
+    axes = [axes]
+
+###############################
+# Plotting: Boxplots with overlaid spaghetti lines
+###############################
+for ax, assess in zip(axes, assessments):
+    # Filter data for current assessment and use defined order for time points
     df_assess = df_all[df_all['assessment'] == assess].copy()
+    order = tp_categories
     
-    # Compute overall y-axis limits with a ±15% margin for the adjusted score
+    # --- Add boxplots (background distribution) ---
+    sns.boxplot(x='tp', y='adjusted_score', data=df_assess, order=order,
+                color='lightgray', ax=ax, showfliers=False)
+    
+    # --- Add spaghetti plots (subject trajectories) ---
+    for subject, subject_df in df_assess.groupby('record_id'):
+        subject_df = subject_df.sort_values('tp')
+        # Convert categorical time points to their corresponding ordinal indices
+        x_vals = [order.index(tp) for tp in subject_df['tp']]
+        y_vals = subject_df['adjusted_score'].tolist()
+        stroke_cat = subject_df['stroke_category'].iloc[0]
+        line_style = line_style_map.get(stroke_cat, "solid")
+        color = stroke_color_map.get(stroke_cat, "black")
+        
+        ax.plot(x_vals, y_vals, marker='o', markersize=2, linestyle=line_style, color=color,
+                linewidth=1.5, alpha=0.7)
+    
+    # --- Update axes ---
     overall_min = df_assess['adjusted_score'].min()
     overall_max = df_assess['adjusted_score'].max()
     overall_range = overall_max - overall_min if overall_max != overall_min else 1
     y_lim_lower = overall_min - 0.15 * overall_range
     y_lim_upper = overall_max + 0.15 * overall_range
+    ax.set_ylim(y_lim_lower, y_lim_upper)
+    #ax.set_title(f"{assess}", fontsize=10)
+    # Adjust the y-axis label based on the assessment type
+    if assess in ['MRS', 'NIHSS']:
+        ax.set_ylabel("Max - Score", fontsize=12)
+    else:
+        ax.set_ylabel("Score", fontsize=12)
+    ax.set_xlabel("Time Point")
+    ax.set_title(assess, fontsize=10)
+    ax.set_xticks(range(len(order)))
+    ax.set_xticklabels(order)
+    ax.set_xlabel("Time Point", fontsize=12)
+    ax.tick_params(labelsize=8)
+    sns.despine(ax=ax, top=True, right=True)
 
-    # --- Add boxplots for each time point (background distribution) ---
-    for tp in tp_categories:
-        tp_data = df_assess[df_assess['tp'] == tp]['adjusted_score']
-        fig.add_trace(
-            go.Box(
-                y=tp_data,
-                name=str(tp),
-                marker_color='lightgray',
-                boxpoints=False,
-                showlegend=False
-            ),
-            row=1, col=col
-        )
-    
-    # --- Add spaghetti plots (subject trajectories) ---
-    for subject, subject_df in df_assess.groupby('record_id'):
-        subject_df = subject_df.sort_values('tp')
-        x_vals = [x_positions[tp] for tp in subject_df['tp']]
-        y_vals = subject_df['adjusted_score'].tolist()
-        # Use stroke category instead of recovery type to set line style and color.
-        # We assume that the stroke_category is consistent for a given subject.
-        stroke_cat = subject_df['stroke_category'].iloc[0]
-        line_style = line_style_map.get(stroke_cat, "solid")
-        color = stroke_color_map.get(stroke_cat, "black")
-        
-        fig.add_trace(
-            go.Scatter(
-                x=x_vals,
-                y=y_vals,
-                mode='lines+markers',
-                line=dict(
-                    dash=line_style,
-                    color=color,
-                    width=1.5
-                ),
-                marker=dict(size=6),
-                opacity=0.7,
-                showlegend=False
-            ),
-            row=1, col=col
-        )
-    
-    # Update the axes for the subplot
-    fig.update_yaxes(range=[y_lim_lower, y_lim_upper], title_text="Score", row=1, col=col)
-    fig.update_xaxes(
-        tickmode='array',
-        tickvals=list(x_positions.values()),
-        ticktext=tp_categories,
-        title_text="Time Point", row=1, col=col
-    )
+plt.tight_layout()
 
-# Update overall layout and title
-fig.update_layout(
-    title_text="Spaghetti Plots by Assessment (Stroke Category Formatting)",
-    width=900,
-    height=400,
-    template="simple_white"
-)
-
-# Save the figure as an SVG file (requires kaleido)
-output_svg = os.path.join(svg_folder, "spaghetti_plots_by_assessment_stroke_category.svg")
-fig.write_image(output_svg, format="svg", scale=2)
+# Save the figure as an SVG file
+output_svg = os.path.join(svg_folder, "spaghetti_plots_by_assessment_stroke_category_sns.svg")
+plt.savefig(output_svg, format="svg")
 print(f"Saved combined spaghetti plots by assessment at {output_svg}")
 
-# Optionally, display the interactive figure
-fig.show("png")
+plt.show()

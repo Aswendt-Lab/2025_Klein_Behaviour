@@ -31,7 +31,7 @@ os.makedirs(pppath, exist_ok=True)
 
 # Read the CSV file into a Pandas DataFrame
 df = pd.read_csv(input_file_path)
-df = df[df["fixed_type"]=="bad"]
+#df = df[df["fixed_type"]=="bad"]
 # Filter out subjects with less than 3 records and NaN values
 subject_counts = df["record_id"].value_counts()
 neglected_subjects = subject_counts[subject_counts < 3].index.tolist()

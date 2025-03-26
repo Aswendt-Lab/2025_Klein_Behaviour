@@ -95,12 +95,15 @@ n_assess = len(assessments)
 ###############################
 # Create a subplot figure with one column per assessment using subplot_titles
 ###############################
+# Adjust horizontal_spacing to be less than 1/(cols-1) for 5 columns, e.g., 0.2
 fig = make_subplots(
     rows=1, cols=n_assess,
     specs=[[{"type": "sankey"} for _ in range(n_assess)]],
     subplot_titles=assessments,
     horizontal_spacing=0.03
 )
+for annotation in fig.layout.annotations:
+    annotation.font.size = 12  # Adjust the size as needed
 
 # Loop through each assessment and add a Sankey trace to the appropriate subplot
 for i, assess in enumerate(assessments, start=1):
@@ -115,55 +118,51 @@ for i, assess in enumerate(assessments, start=1):
     
     source = []
     target = []
-    values = []
+    values = []  # This will now store percentage values relative to total subjects
     percentages = []  # To store percentage for each flow link
     
-    # Compute totals per recovery type for percentage calculation of flows
-    rec_totals = agg_df.groupby("recovery_type")["count"].sum().to_dict()
+    # Compute total number of subjects for the current assessment
+    df_recovery = df_assess.drop_duplicates(subset='record_id')
+    total_subjects = len(df_recovery)
     
+    # Calculate flow percentages relative to the overall subjects
     for _, row in agg_df.iterrows():
         rec_type = row["recovery_type"]
         stroke_cat = row["stroke_category"]
-        flow_value = row["count"]
+        flow_count = row["count"]
         
         # Only include flows for predefined nodes (if both exist in the mapping)
         if rec_type in label_to_idx and stroke_cat in label_to_idx:
+            pct = (flow_count / total_subjects) * 100
             source.append(label_to_idx[rec_type])
             target.append(label_to_idx[stroke_cat])
-            values.append(flow_value)
-            # Calculate percentage relative to the recovery type's total flows
-            pct = (flow_value / rec_totals[rec_type]) * 100
+            values.append(pct)
             percentages.append(pct)
-    
-    # Compute subject-level percentages for dynamic node labels
-    # Drop duplicates to ensure one record per subject
-    df_recovery = df_assess.drop_duplicates(subset='record_id')
-    total_subjects = len(df_recovery)
     
     # Compute percentages for recovery types (left nodes)
     left_labels = []
     for rt in recovery_types:
         count = (df_recovery['recovery_type'] == rt).sum()
-        percent = (count) if total_subjects > 0 else 0
-        left_labels.append(f"{percent}")
+        pct = (count / total_subjects * 100) if total_subjects > 0 else 0
+        left_labels.append(f"{pct:.1f}%")
     
     # Compute percentages for stroke categories (right nodes)
     right_labels = []
     for sc in stroke_categories:
         count = (df_recovery['stroke_category'] == sc).sum()
-        percent = (count) if total_subjects > 0 else 0
-        right_labels.append(f"{percent}")
+        pct = (count / total_subjects * 100) if total_subjects > 0 else 0
+        right_labels.append(f"{pct:.1f}%")
     
     # Combined node labels for this assessment
     node_labels_with_perc = left_labels + right_labels
     
-    # Create a Sankey trace with customdata (percentages) and a hovertemplate to display them
+    # Create a Sankey trace with customdata (percentages) and a hovertemplate to display them.
+    # Note: The 'pad' is set to 5 to provide minimal spacing between nodes.
     sankey_trace = go.Sankey(
         node=dict(
             pad=5,
-            thickness=10,
+            thickness=15,
             line=dict(color="black", width=0.5),
-            label=node_labels_with_perc,
             color=node_colors
         ),
         link=dict(
@@ -171,24 +170,25 @@ for i, assess in enumerate(assessments, start=1):
             target=target,
             value=values,
             customdata=percentages,
-            hovertemplate="Flow: %{value}<br>Percentage: %{customdata:.1f}%<extra></extra>"
+            hovertemplate="Percentage: %{value:.1f}%<extra></extra>"
         )
     )
     
     # Add the trace to the subplot at row=1, col=i
     fig.add_trace(sankey_trace, row=1, col=i)
 
-# Update overall layout of the figure
+# Remove all outer margins/padding around the plot
+m = 20
 fig.update_layout(
-    title_text="Sankey Diagram",
     font=dict(size=10),
-    width=750,  # Adjust width per subplot as needed
-    height=300,
+    width=680,  # 18 cm
+    height=227,  # 6 cm
     showlegend=False,
-    margin=dict(t=100)  # Increase top margin to accommodate subtitles
+    margin=dict(l=m, r=m, t=m, b=m)
 )
-# Display the figure (this will not automatically open in a browser)
-fig.show(renderer="png")  # or use "png" or another renderer that suits your environment
+
+# Display the figure using a PNG renderer
+fig.show(renderer="png")  # or use another renderer that suits your environment
 
 # Save the combined figure as an SVG file (if desired)
 output_svg = os.path.join(svg_folder, "sankey_all_assessments.svg")

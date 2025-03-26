@@ -300,7 +300,7 @@ for ax, assess in zip(axes, assessments):
                     linestyle=line_style, color=color, alpha=0.8)
     
     ax_ind.set_ylim(y_lim_lower, y_lim_upper)
-    ax_ind.set_title(f"Assessment: {assess}", fontsize=10)
+    #ax_ind.set_title(f"Assessment: {assess}", fontsize=10)
     # Adjust y-axis label for inverted assessments
     if assess in ['MRS', 'NIHSS']:
         ax_ind.set_ylabel("Max - Score", fontsize=12)
