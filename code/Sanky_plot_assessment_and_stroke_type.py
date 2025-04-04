@@ -72,15 +72,24 @@ node_order = list(recovery_types) + list(stroke_categories)
 label_to_idx = {lab: i for i, lab in enumerate(node_order)}
 
 ###############################
-# Create color palettes for nodes using Seaborn and Matplotlib
+# Create color palettes for nodes using custom color mappings
 ###############################
-# For recovery types, use the "Set1" palette.
-recovery_colors = sns.color_palette("Set1", n_colors=len(recovery_types))
-recovery_colors_hex = [mcolors.to_hex(color) for color in recovery_colors]
+# Use the Okabe-Ito palette for recovery types:
+recovery_color_map = {
+    "Steady recovery": "#009E73",                    # Bluish green for growth
+    "Steady decline": "#D55E00",                     # Vermilion red for decline
+    "Early recovery with chronic decline": "#E69F00", # Orange for early improvement but caution
+    "Late recovery with acute decline": "#0072B2"    # Deep blue for late recovery after an acute drop
+}
+recovery_colors_hex = [recovery_color_map[rt] for rt in recovery_types]
 
-# For stroke categories, use a different palette such as "Set2".
-stroke_colors = sns.color_palette("Set2", n_colors=len(stroke_categories))
-stroke_colors_hex = [mcolors.to_hex(color) for color in stroke_colors]
+# For stroke categories, use the specified colors:
+stroke_color_map = {
+    "INFARCT": "#4d4d4d",  # gray
+    "BLEEDING": "#e41a1c",  # red
+    "OTHER": "#CCCCCC"     # default color for OTHER
+}
+stroke_colors_hex = [stroke_color_map[sc] for sc in stroke_categories]
 
 # Combine the color lists in the same order as node_order.
 node_colors = recovery_colors_hex + stroke_colors_hex
@@ -95,7 +104,6 @@ n_assess = len(assessments)
 ###############################
 # Create a subplot figure with one column per assessment using subplot_titles
 ###############################
-# Adjust horizontal_spacing to be less than 1/(cols-1) for 5 columns, e.g., 0.2
 fig = make_subplots(
     rows=1, cols=n_assess,
     specs=[[{"type": "sankey"} for _ in range(n_assess)]],
@@ -103,7 +111,7 @@ fig = make_subplots(
     horizontal_spacing=0.03
 )
 for annotation in fig.layout.annotations:
-    annotation.font.size = 12  # Adjust the size as needed
+    annotation.font.size = 14  # Adjust the size as needed
 
 # Loop through each assessment and add a Sankey trace to the appropriate subplot
 for i, assess in enumerate(assessments, start=1):
@@ -118,8 +126,8 @@ for i, assess in enumerate(assessments, start=1):
     
     source = []
     target = []
-    values = []  # This will now store percentage values relative to total subjects
-    percentages = []  # To store percentage for each flow link
+    values = []      # Percentage values relative to total subjects
+    percentages = [] # Store percentage for each flow link
     
     # Compute total number of subjects for the current assessment
     df_recovery = df_assess.drop_duplicates(subset='record_id')
@@ -157,7 +165,6 @@ for i, assess in enumerate(assessments, start=1):
     node_labels_with_perc = left_labels + right_labels
     
     # Create a Sankey trace with customdata (percentages) and a hovertemplate to display them.
-    # Note: The 'pad' is set to 5 to provide minimal spacing between nodes.
     sankey_trace = go.Sankey(
         node=dict(
             pad=5,
@@ -180,7 +187,7 @@ for i, assess in enumerate(assessments, start=1):
 # Remove all outer margins/padding around the plot
 m = 20
 fig.update_layout(
-    font=dict(size=10),
+    font=dict(size=12),
     width=680,  # 18 cm
     height=227,  # 6 cm
     showlegend=False,
@@ -194,3 +201,46 @@ fig.show(renderer="png")  # or use another renderer that suits your environment
 output_svg = os.path.join(svg_folder, "sankey_all_assessments.svg")
 fig.write_image(output_svg, engine="kaleido")
 print(f"Sankey diagrams saved to {output_svg}")
+
+###############################
+# Compute percentages for BLEEDING in steady vs. non-steady recoverers and save as CSV
+###############################
+results = []
+# Loop through each assessment to compute the percentages
+for assess in assessments:
+    # Filter the data for the current assessment and ensure one row per subject
+    df_assess = df_all[df_all["assessment"] == assess]
+    df_recovery = df_assess.drop_duplicates(subset="record_id")
+    
+    # For steady recoverers (recovery_type exactly "Steady recovery")
+    df_steady = df_recovery[df_recovery["recovery_type"] == "Steady recovery"]
+    count_steady = len(df_steady)
+    count_bleeding_steady = len(df_steady[df_steady["stroke_category"] == "BLEEDING"])
+    pct_steady = (count_bleeding_steady / count_steady * 100) if count_steady > 0 else 0
+    
+    # For non-steady recoverers (all others)
+    df_non_steady = df_recovery[df_recovery["recovery_type"] != "Steady recovery"]
+    count_non_steady = len(df_non_steady)
+    count_bleeding_non_steady = len(df_non_steady[df_non_steady["stroke_category"] == "BLEEDING"])
+    pct_non_steady = (count_bleeding_non_steady / count_non_steady * 100) if count_non_steady > 0 else 0
+    
+    # Prepare sentences
+    sentence_steady = f"{pct_steady:.1f}% of the steady recoverers are Bleedings."
+    sentence_non_steady = f"{pct_non_steady:.1f}% of the patients that are not steady recoverers are Bleedings."
+    
+    # Append the results for this assessment
+    results.append({
+        "assessment": assess,
+        "steady_recoverers_bleeding_percentage": pct_steady,
+        "steady_recoverers_sentence": sentence_steady,
+        "non_steady_recoverers_bleeding_percentage": pct_non_steady,
+        "non_steady_recoverers_sentence": sentence_non_steady
+    })
+
+# Convert results to a DataFrame
+results_df = pd.DataFrame(results)
+
+# Save the DataFrame as a CSV file
+output_csv = os.path.join(output_dir, "bleeding_percentages_by_recovery.csv")
+results_df.to_csv(output_csv, index=False)
+print(f"Bleeding percentages CSV saved to {output_csv}")

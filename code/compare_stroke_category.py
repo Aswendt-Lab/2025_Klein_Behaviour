@@ -71,8 +71,8 @@ tp_categories = list(df_all['tp'].cat.categories)
 # Define figure dimensions and create subplots
 ###############################
 cm_to_inch = 0.3937
-fig_width = 30 * cm_to_inch  
-subplot_height = 8.5 * cm_to_inch  
+fig_width = 30 * cm_to_inch  * (18/30)
+subplot_height = 9.5 * cm_to_inch * (18/30) 
 
 fig, axes = plt.subplots(1, n_assess, figsize=(fig_width, subplot_height), dpi=300)
 # Ensure axes is iterable when only one subplot exists
@@ -101,8 +101,8 @@ for ax, assess in zip(axes, assessments):
         line_style = line_style_map.get(stroke_cat, "solid")
         color = stroke_color_map.get(stroke_cat, "black")
         
-        ax.plot(x_vals, y_vals, marker='o', markersize=2, linestyle=line_style, color=color,
-                linewidth=1.5, alpha=0.7)
+        ax.plot(x_vals, y_vals, marker='o', markersize=2* (18/30), linestyle=line_style, color=color,
+                linewidth=1.5* (18/30), alpha=0.7)
     
     # --- Update axes ---
     overall_min = df_assess['adjusted_score'].min()
@@ -118,7 +118,7 @@ for ax, assess in zip(axes, assessments):
     else:
         ax.set_ylabel("Score", fontsize=12)
     ax.set_xlabel("Time Point")
-    ax.set_title(assess, fontsize=10)
+    ax.set_title(assess, fontsize=12)
     ax.set_xticks(range(len(order)))
     ax.set_xticklabels(order)
     ax.set_xlabel("Time Point", fontsize=12)

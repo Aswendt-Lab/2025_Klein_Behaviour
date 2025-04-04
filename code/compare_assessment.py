@@ -60,6 +60,11 @@ df_merged = pd.merge(df_stitched, df_stroketype, on='record_id', how='left')
 df_merged = df_merged.groupby(['record_id', 'assessment']).filter(lambda x: len(x) == 3)
 df_merged = df_merged.groupby(['record_id', 'tp']).filter(lambda group: len(group) == 5)
 
+import matplotlib as mpl
+mpl.rcParams['font.family'] = 'Calibri'
+mpl.rcParams['font.size'] = 12
+
+
 ########################################
 # Apply score transformation for MRS and NIHSS
 ########################################
@@ -147,7 +152,6 @@ stitched_csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM_BI_MRS_
 df_merged.to_csv(stitched_csv_file, index=False)
 print(f"Stitched and merged data saved to {stitched_csv_file}")
 
-
 ########################################
 # Plotting setup and recovery percentage calculations
 ########################################
@@ -164,10 +168,14 @@ recovery_types = [
     "Early recovery with chronic decline", 
     "Late recovery with acute decline"
 ]
-colors = sns.color_palette("Set1", n_colors=4)
-colors = [mcolors.to_hex(color) for color in colors]
+# Define a color mapping using colors from the Okabe-Ito palette:
+recovery_color_map = {
+    "Steady recovery": "#009E73",                  # Bluish green for growth
+    "Steady decline": "#D55E00",                   # Vermilion red for decline
+    "Early recovery with chronic decline": "#E69F00", # Orange for early improvement but caution
+    "Late recovery with acute decline": "#0072B2"    # Deep blue for late recovery after an acute drop
+}
 
-recovery_color_map = dict(zip(recovery_types, colors))
 
 # Set measure and axis labels for plotting
 measure = 'adjusted_score'
@@ -193,8 +201,8 @@ n_assess = len(assessments)
 
 # Define figure dimensions: 30 cm wide (converted to inches) and a fixed height per subplot
 cm_to_inch = 0.3937
-fig_width = 30 * cm_to_inch  
-subplot_height = 8.5 * cm_to_inch  
+fig_width = 30 * cm_to_inch * (18/30)
+subplot_height = 9.5 * cm_to_inch * (18/30)  
 
 # Create a figure with one subplot per assessment type (side-by-side)
 fig, axes = plt.subplots(1, n_assess, figsize=(fig_width, subplot_height), dpi=300)
@@ -246,11 +254,11 @@ for ax, assess in zip(axes, assessments):
         line_style = line_style_map.get(recovery_type, "-")
         color = recovery_color_map.get(recovery_type, "black")
         
-        ax.plot(x_vals, y_vals, marker='o', markersize=2, linewidth=1.2,
-                linestyle=line_style, color=color, alpha=0.6)
+        ax.plot(x_vals, y_vals, marker='o', markersize=2*(18/30), linewidth=1.2*(18/30),
+                linestyle=line_style, color=color, alpha=0.7)
     
     ax.set_ylim(y_lim_lower, y_lim_upper)
-    ax.set_title(f"{assess}", fontsize=10)
+    ax.set_title(f"{assess}", fontsize=12)
     # Adjust the y-axis label based on the assessment type
     if assess in ['MRS', 'NIHSS']:
         ax.set_ylabel("Max - Score", fontsize=12)
@@ -300,7 +308,6 @@ for ax, assess in zip(axes, assessments):
                     linestyle=line_style, color=color, alpha=0.8)
     
     ax_ind.set_ylim(y_lim_lower, y_lim_upper)
-    #ax_ind.set_title(f"Assessment: {assess}", fontsize=10)
     # Adjust y-axis label for inverted assessments
     if assess in ['MRS', 'NIHSS']:
         ax_ind.set_ylabel("Max - Score", fontsize=12)
@@ -327,3 +334,64 @@ recovery_csv_file = os.path.join(figures_dir, 'recovery_type_percentages_all_ass
 df_results = pd.DataFrame(all_results)
 df_results.to_csv(recovery_csv_file, index=False)
 print(f"Recovery type percentages saved at: {recovery_csv_file}")
+
+########################################
+# Additional Calculation:
+# Calculate the percentage of non-"Steady recovery" subjects in the upper and lower half of the baseline (first timepoint)
+########################################
+baseline_results = []
+
+# Loop through each assessment in our defined order
+for assess in assessments:
+    # Filter data for the current assessment
+    df_assess = df_plot[df_plot['assessment'] == assess].copy()
+    
+    # Compute subject-level baseline score and recovery type
+    subjects = []
+    for subject, subject_df in df_assess.groupby('record_id'):
+        subject_df = subject_df.sort_values('tp')
+        # Calculate recovery type using the series of adjusted_score values
+        rtype = assign_recovery_type(subject_df[measure])
+        # Save baseline (first timepoint) score and recovery type
+        subjects.append({
+            'record_id': subject,
+            'baseline_score': subject_df.iloc[0][measure],
+            'recovery_type': rtype
+        })
+    
+    # Create DataFrame with one row per subject for this assessment
+    df_subjects = pd.DataFrame(subjects)
+    
+    # Filter to include only subjects that are NOT "Steady recovery"
+    df_not_steady = df_subjects[df_subjects['recovery_type'] != "Steady recovery"]
+    total_not_steady = len(df_not_steady)
+    
+    if total_not_steady == 0:
+        print(f"No non-Steady recovery subjects found for assessment {assess}.")
+        continue
+    
+    # Compute the median of the baseline scores for non-Steady recovery subjects
+    median_baseline = df_not_steady['baseline_score'].median()
+    
+    # For this example, scores equal to the median are assigned to the lower half.
+    lower_count = (df_not_steady['baseline_score'] <= median_baseline).sum()
+    upper_count = (df_not_steady['baseline_score'] > median_baseline).sum()
+    
+    lower_percentage = round((lower_count / total_not_steady * 100), 2)
+    upper_percentage = round((upper_count / total_not_steady * 100), 2)
+    
+    baseline_results.append({
+        'Assessment': assess,
+        'Total_non_Steady': total_not_steady,
+        'Median_baseline': median_baseline,
+        'Lower_half_count': lower_count,
+        'Lower_half_percentage': lower_percentage,
+        'Upper_half_count': upper_count,
+        'Upper_half_percentage': upper_percentage
+    })
+
+# Save the baseline halves results to CSV
+baseline_csv_file = os.path.join(figures_dir, 'non_steady_baseline_halves_percentages.csv')
+df_baseline_results = pd.DataFrame(baseline_results)
+df_baseline_results.to_csv(baseline_csv_file, index=False)
+print(f"Non-Steady recovery baseline half percentages saved at: {baseline_csv_file}")

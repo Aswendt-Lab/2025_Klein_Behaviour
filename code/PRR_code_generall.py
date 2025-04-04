@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 
 import seaborn as sns
+from matplotlib.ticker import MaxNLocator  # Import tick locator
 
 # File paths
 code_dir = os.path.dirname(os.path.abspath(__file__))
@@ -15,7 +16,7 @@ os.makedirs(pppath, exist_ok=True)
 df = pd.read_csv(input_file_path)
 
 # Assessment types and corresponding max scores
-assessment_types = ['FM-uex','FM-lex', 'BI', 'MRS', 'NIHSS']
+assessment_types = ['FM-uex', 'FM-lex', 'BI', 'MRS', 'NIHSS']
 max_scores = {
     'FM-uex': 126,
     'FM-lex': 86,
@@ -28,8 +29,8 @@ max_scores = {
 def euclidean_distance(x, y, slope, intercept):
     return np.abs(slope * x - y + intercept) / np.sqrt(slope**2 + 1)
 
-# Set up the subplot grid: 3 columns x 2 rows.
-fig, axs = plt.subplots(2, 3, figsize=(18/2.54, 12/2.54), squeeze=False, dpi=300)
+# Set up the subplot grid: 1 row x 5 columns.
+fig, axs = plt.subplots(1, 5, figsize=(18/2.54, 5/2.54), squeeze=False, dpi=300)
 axs = axs.flatten()  # flatten for easier indexing
 
 # Lists to collect fit parameters and outlier information
@@ -117,7 +118,8 @@ for i, assessment in enumerate(assessment_types):
     # --- Identify outliers based on Euclidean distance to the best fit line ---
     x_data = df_wide['INITIAL_IMPAIRMENT']
     y_data = df_wide['CHANGE_OBSERVED']
-    distances = euclidean_distance(x_data, y_data, best_slope, best_intercept)
+    distances = euclidean_distance(x_data, y_data, fixed_slope, best_intercept)
+
     # Compute Q1, Q3 and IQR for the distances
     Q1 = np.percentile(distances, 25)
     Q3 = np.percentile(distances, 75)
@@ -133,20 +135,31 @@ for i, assessment in enumerate(assessment_types):
     # Mark outliers with red edge circles (no fill)
     ax.scatter(x_data[outlier_mask], y_data[outlier_mask], color='red', s=40, marker="x", alpha=0.5)
     
-    # Set title and labels with specified font sizes (title=10, labels=12)
-    ax.set_title(assessment, fontsize=10)
-    ax.set_xlabel('ii', fontsize=12)
-    ax.set_ylabel('co', fontsize=12)
+    # Set title for subplot
+    ax.set_title(assessment, fontsize=12)
     
-    # Removed legend to simplify the plots
+    # Only set the y-label for the first subplot
+    if i == 0:
+        ax.set_ylabel('Change observed', fontsize=12)
+    
+    # Remove individual x-labels (we'll use a common one later)
+    ax.set_xlabel('')
     
     # Remove top and right spines
     sns.despine(ax=ax, top=True, right=True)
+    
+    # Apply tick harmonization only if the assessment is NOT MRS
+    if assessment != 'MRS':
+        ax.xaxis.set_major_locator(MaxNLocator(4))
+        ax.yaxis.set_major_locator(MaxNLocator(4))
 
 # Hide any unused subplots
 if len(assessment_types) < len(axs):
     for j in range(len(assessment_types), len(axs)):
         axs[j].axis('off')
+
+# Add a general x label for all subplots
+fig.supxlabel('Initial impairment', fontsize=12)
 
 plt.tight_layout()
 fig_path = os.path.join(pppath, "all_assessments_prr_vs_best_fit.svg")

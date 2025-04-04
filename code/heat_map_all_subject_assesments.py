@@ -22,19 +22,23 @@ os.makedirs(svg_folder, exist_ok=True)
 ###############################
 stitched_csv_file = os.path.join(output_dir, 'behavioral_data_cleaned_FM_BI_MRS_NIHSS_all_asssessment_types.csv')
 df_all = pd.read_csv(stitched_csv_file)
+import matplotlib as mpl
+mpl.rcParams['font.family'] = 'Calibri'
+mpl.rcParams['font.size'] = 12
 
 # Further filter data to only include time point tp == 2
 df_all = df_all[df_all["tp"] == 2]
 
 expected_cols = ['record_id', 'assessment', 'recovery_type']
 
-# Fixed recovery color mapping in the given order.
+# Define a color mapping using colors from the Okabe-Ito palette:
 recovery_color_map = {
-    'Steady recovery': '#e41a1c',
-    'Steady decline': '#377eb8',
-    'Early recovery with chronic decline': '#4daf4a',
-    'Late recovery with acute decline': '#984ea3'
+    "Steady recovery": "#009E73",                  # Bluish green for growth
+    "Steady decline": "#D55E00",                   # Vermilion red for decline
+    "Early recovery with chronic decline": "#E69F00", # Orange for early improvement but caution
+    "Late recovery with acute decline": "#0072B2"    # Deep blue for late recovery after an acute drop
 }
+
 print("Recovery Color Map:", recovery_color_map)
 
 # Use the order provided by the fixed dictionary.
@@ -80,6 +84,7 @@ df_all["stroke_category"] = df_all["stroke_type"].apply(categorize_stroke)
 # Pivot data for heatmap
 ###############################
 assessment_order = ["FM-lex", "FM-uex", "BI", "MRS", "NIHSS"]
+assessment_order = assessment_order[::-1]
 
 # Pivot the DataFrame with record_id as the index.
 heatmap_data = df_all.pivot(index='record_id', columns='assessment', values='recovery_numeric')
@@ -169,22 +174,23 @@ fig = go.Figure(
     )
 )
 
-# Update layout: x-axis now corresponds to record IDs (with stroke labels) and y-axis to assessments.
 fig.update_layout(
-    title="Recovery Type Heatmap (Flipped Axes, Sorted by Stroke Category)",
-    xaxis_title="Record ID",
-    yaxis_title="Assessment",
+    title="",
     xaxis=dict(
         tickmode='array',
         tickvals=list(heatmap_data_T.columns),
         ticktext=stroke_info['record_label'].tolist(),
         side='top',          # Place x-axis ticks on the top
-        tickangle=50         # Rotate x-axis ticks by 10 degrees
+        tickangle=50,        # Rotate x-axis ticks by 50 degrees
+        tickfont=dict(family="Calibri", size=12),
+        title=dict(text="Record ID", font=dict(family="Calibri", size=16.2))
     ),
     yaxis=dict(
         tickmode='array',
         tickvals=assessment_order,
-        ticktext=assessment_order
+        ticktext=assessment_order,
+        tickfont=dict(family="Calibri", size=12),
+        title=dict(text="Assessment", font=dict(family="Calibri", size=16.2))
     ),
     template='plotly_white',
     width=750,   # Increase width for horizontal orientation
