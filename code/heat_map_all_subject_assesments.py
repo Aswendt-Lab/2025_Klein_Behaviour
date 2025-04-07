@@ -36,7 +36,8 @@ recovery_color_map = {
     "Steady recovery": "#009E73",                  # Bluish green for growth
     "Steady decline": "#D55E00",                   # Vermilion red for decline
     "Early recovery with chronic decline": "#E69F00", # Orange for early improvement but caution
-    "Late recovery with acute decline": "#0072B2"    # Deep blue for late recovery after an acute drop
+    "Late recovery with acute decline": "#0072B2" ,   # Deep blue for late recovery after an acute drop
+    "Unclassified": "#D9D9D9"
 }
 
 print("Recovery Color Map:", recovery_color_map)
@@ -133,7 +134,8 @@ recovery_symbol_map = {
     'Steady recovery': '/',
     'Steady decline': '\\',
     'Early recovery with chronic decline': '/\\',
-    'Late recovery with acute decline': '\\/'
+    'Late recovery with acute decline': '\\/',
+    "Unclassified": "--"
 }
 
 # Create a reverse mapping from numeric code to symbol.
@@ -158,8 +160,8 @@ fig = go.Figure(
         x=heatmap_data_T.columns,   # x-axis: record IDs
         y=heatmap_data_T.index,     # y-axis: assessments
         colorscale=colorscale,      # use the discrete colorscale
-        xgap=1,
-        ygap=1,
+        xgap=1.5,
+        ygap=0,
         showscale=False,
         text=text_matrix_T.values,  # text annotations for each cell
         texttemplate="%{text}",      # display the text annotations
@@ -176,12 +178,13 @@ fig = go.Figure(
 
 fig.update_layout(
     title="",
+    margin=dict(l=50, r=10, t=10, b=50),  # Increase bottom margin for extra space
     xaxis=dict(
         tickmode='array',
         tickvals=list(heatmap_data_T.columns),
         ticktext=stroke_info['record_label'].tolist(),
-        side='top',          # Place x-axis ticks on the top
-        tickangle=50,        # Rotate x-axis ticks by 50 degrees
+        side='bottom',
+        tickangle=50,
         tickfont=dict(family="Calibri", size=12),
         title=dict(text="Record ID", font=dict(family="Calibri", size=16.2))
     ),
@@ -189,12 +192,11 @@ fig.update_layout(
         tickmode='array',
         tickvals=assessment_order,
         ticktext=assessment_order,
-        tickfont=dict(family="Calibri", size=12),
-        title=dict(text="Assessment", font=dict(family="Calibri", size=16.2))
+        tickfont=dict(family="Calibri", size=12)
     ),
     template='plotly_white',
-    width=750,   # Increase width for horizontal orientation
-    height=300
+    width=37.8*18,
+    height=200
 )
 
 # Display the figure.

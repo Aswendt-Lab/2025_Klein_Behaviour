@@ -62,7 +62,8 @@ recovery_types = [
     "Steady recovery", 
     "Steady decline", 
     "Early recovery with chronic decline", 
-    "Late recovery with acute decline"
+    "Late recovery with acute decline",
+    "Unclassified"
 ]
 # Right-side nodes: stroke categories
 stroke_categories = ["INFARCT", "BLEEDING", "OTHER"]
@@ -79,8 +80,8 @@ recovery_color_map = {
     "Steady recovery": "#009E73",                    # Bluish green for growth
     "Steady decline": "#D55E00",                     # Vermilion red for decline
     "Early recovery with chronic decline": "#E69F00", # Orange for early improvement but caution
-    "Late recovery with acute decline": "#0072B2"    # Deep blue for late recovery after an acute drop
-}
+    "Late recovery with acute decline": "#0072B2",    # Deep blue for late recovery after an acute drop
+    "Unclassified": "#D9D9D9"}
 recovery_colors_hex = [recovery_color_map[rt] for rt in recovery_types]
 
 # For stroke categories, use the specified colors:
@@ -152,14 +153,14 @@ for i, assess in enumerate(assessments, start=1):
     for rt in recovery_types:
         count = (df_recovery['recovery_type'] == rt).sum()
         pct = (count / total_subjects * 100) if total_subjects > 0 else 0
-        left_labels.append(f"{pct:.1f}%")
+        left_labels.append(f"{count}")
     
     # Compute percentages for stroke categories (right nodes)
     right_labels = []
     for sc in stroke_categories:
         count = (df_recovery['stroke_category'] == sc).sum()
         pct = (count / total_subjects * 100) if total_subjects > 0 else 0
-        right_labels.append(f"{pct:.1f}%")
+        right_labels.append(f"{count}")
     
     # Combined node labels for this assessment
     node_labels_with_perc = left_labels + right_labels
@@ -231,9 +232,9 @@ for assess in assessments:
     # Append the results for this assessment
     results.append({
         "assessment": assess,
-        "steady_recoverers_bleeding_percentage": pct_steady,
+        "steady_recoverers_bleeding_count": count_bleeding_steady,
         "steady_recoverers_sentence": sentence_steady,
-        "non_steady_recoverers_bleeding_percentage": pct_non_steady,
+        "non_steady_recoverers_bleeding_count": count_bleeding_non_steady,
         "non_steady_recoverers_sentence": sentence_non_steady
     })
 

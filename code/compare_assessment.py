@@ -64,7 +64,6 @@ import matplotlib as mpl
 mpl.rcParams['font.family'] = 'Calibri'
 mpl.rcParams['font.size'] = 12
 
-
 ########################################
 # Apply score transformation for MRS and NIHSS
 ########################################
@@ -167,20 +166,21 @@ recovery_types = [
     "Steady decline", 
     "Early recovery with chronic decline", 
     "Late recovery with acute decline"
+    "Unclassified"
 ]
 # Define a color mapping using colors from the Okabe-Ito palette:
 recovery_color_map = {
-    "Steady recovery": "#009E73",                  # Bluish green for growth
-    "Steady decline": "#D55E00",                   # Vermilion red for decline
-    "Early recovery with chronic decline": "#E69F00", # Orange for early improvement but caution
-    "Late recovery with acute decline": "#0072B2"    # Deep blue for late recovery after an acute drop
+    "Steady recovery": "#009E73",                   # Bluish green for growth
+    "Steady decline": "#D55E00",                    # Vermilion red for decline
+    "Early recovery with chronic decline": "#E69F00",# Orange for early improvement but caution
+    "Late recovery with acute decline": "#0072B2",   # Deep blue for late recovery after an acute drop
+    "Unclassified": "#D9D9D9"
 }
-
 
 # Set measure and axis labels for plotting
 measure = 'adjusted_score'
 xlabel = "Time Point"
-ylabel = "Score"
+ylabel = "Score"  # This will be used only for FM-lex
 
 # Reload the stitched data and ensure 'tp' is categorical
 df_plot = pd.read_csv(stitched_csv_file)
@@ -259,11 +259,15 @@ for ax, assess in zip(axes, assessments):
     
     ax.set_ylim(y_lim_lower, y_lim_upper)
     ax.set_title(f"{assess}", fontsize=12)
-    # Adjust the y-axis label based on the assessment type
-    if assess in ['MRS', 'NIHSS']:
-        ax.set_ylabel("Max - Score", fontsize=12)
+    # Set y-label only for FM-lex and MRS
+    if assess in ['FM-lex', 'MRS']:
+        if assess == 'MRS':
+            ax.set_ylabel("Max - Score", fontsize=12)
+        else:
+            ax.set_ylabel(ylabel, fontsize=12)
     else:
-        ax.set_ylabel(ylabel, fontsize=12)
+        ax.set_ylabel('')
+        
     ax.set_xlabel(xlabel, fontsize=12)
     ax.tick_params(labelsize=8)
     sns.despine(ax=ax, top=True, right=True)
@@ -308,11 +312,15 @@ for ax, assess in zip(axes, assessments):
                     linestyle=line_style, color=color, alpha=0.8)
     
     ax_ind.set_ylim(y_lim_lower, y_lim_upper)
-    # Adjust y-axis label for inverted assessments
-    if assess in ['MRS', 'NIHSS']:
-        ax_ind.set_ylabel("Max - Score", fontsize=12)
+    # Set y-label only for FM-lex and MRS in the individual plots
+    if assess in ['FM-lex', 'MRS']:
+        if assess == 'MRS':
+            ax_ind.set_ylabel("Max - Score", fontsize=12)
+        else:
+            ax_ind.set_ylabel(ylabel, fontsize=12)
     else:
-        ax_ind.set_ylabel(ylabel, fontsize=12)
+        ax_ind.set_ylabel('')
+        
     ax_ind.set_xlabel("Time Point", fontsize=12)
     ax_ind.tick_params(labelsize=8)
     sns.despine(ax=ax_ind, top=True, right=True)
@@ -324,6 +332,7 @@ for ax, assess in zip(axes, assessments):
     print(f"Saved individual SVG for assessment '{assess}' at {svg_filename}")
 
 plt.tight_layout(rect=[0, 0, 1, 1])
+plt.subplots_adjust(wspace=0.37)  # Adjust wspace to reduce horizontal space between subplots
 # Save the combined figure without a legend
 combined_fig_filename = os.path.join(figures_dir, "spaghetti_plots_all_assessments.svg")
 plt.savefig(combined_fig_filename, dpi=300)

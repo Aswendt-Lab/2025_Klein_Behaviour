@@ -2,20 +2,20 @@ Assessment,Recovery_Type,Count,Total,Percentage
 FM-lex,Steady recovery,25,36,69.44
 FM-lex,Steady decline,0,36,0.0
 FM-lex,Early recovery with chronic decline,4,36,11.11
-FM-lex,Late recovery with acute decline,7,36,19.44
+FM-lex,Late recovery with acute declineUnclassified,0,36,0.0
 FM-uex,Steady recovery,21,36,58.33
 FM-uex,Steady decline,3,36,8.33
 FM-uex,Early recovery with chronic decline,6,36,16.67
-FM-uex,Late recovery with acute decline,6,36,16.67
+FM-uex,Late recovery with acute declineUnclassified,0,36,0.0
 BI,Steady recovery,32,36,88.89
 BI,Steady decline,0,36,0.0
 BI,Early recovery with chronic decline,3,36,8.33
-BI,Late recovery with acute decline,1,36,2.78
+BI,Late recovery with acute declineUnclassified,0,36,0.0
 MRS,Steady recovery,32,36,88.89
 MRS,Steady decline,0,36,0.0
 MRS,Early recovery with chronic decline,2,36,5.56
-MRS,Late recovery with acute decline,1,36,2.78
+MRS,Late recovery with acute declineUnclassified,0,36,0.0
 NIHSS,Steady recovery,28,36,77.78
 NIHSS,Steady decline,0,36,0.0
 NIHSS,Early recovery with chronic decline,4,36,11.11
-NIHSS,Late recovery with acute decline,3,36,8.33
+NIHSS,Late recovery with acute declineUnclassified,0,36,0.0

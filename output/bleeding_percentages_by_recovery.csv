@@ -1,6 +1,6 @@
-assessment,steady_recoverers_bleeding_percentage,steady_recoverers_sentence,non_steady_recoverers_bleeding_percentage,non_steady_recoverers_sentence
-FM-lex,16,16.0% of the steady recoverers are Bleedings.,9.090909091,9.1% of the patients that are not steady recoverers are Bleedings.
-FM-uex,9.523809524,9.5% of the steady recoverers are Bleedings.,20,20.0% of the patients that are not steady recoverers are Bleedings.
-BI,12.5,12.5% of the steady recoverers are Bleedings.,25,25.0% of the patients that are not steady recoverers are Bleedings.
-MRS,12.5,12.5% of the steady recoverers are Bleedings.,25,25.0% of the patients that are not steady recoverers are Bleedings.
-NIHSS,14.28571429,14.3% of the steady recoverers are Bleedings.,12.5,12.5% of the patients that are not steady recoverers are Bleedings.
+assessment,steady_recoverers_bleeding_count,steady_recoverers_sentence,non_steady_recoverers_bleeding_count,non_steady_recoverers_sentence
+FM-lex,4,16.0% of the steady recoverers are Bleedings.,1,9.1% of the patients that are not steady recoverers are Bleedings.
+FM-uex,2,9.5% of the steady recoverers are Bleedings.,3,20.0% of the patients that are not steady recoverers are Bleedings.
+BI,4,12.5% of the steady recoverers are Bleedings.,1,25.0% of the patients that are not steady recoverers are Bleedings.
+MRS,4,12.5% of the steady recoverers are Bleedings.,1,25.0% of the patients that are not steady recoverers are Bleedings.
+NIHSS,4,14.3% of the steady recoverers are Bleedings.,1,12.5% of the patients that are not steady recoverers are Bleedings.

@@ -166,14 +166,14 @@ for ax, tp in zip(axes, timepoints):
         ax=ax
     )
     
-    #ax.set_title(f'Timepoint {tp}', fontsize=12)
-    ax.set_xlabel('Lex Score', fontsize=12)
-    # Set y-axis label only for the first subplot to avoid redundancy
+    # Set new axis labels: x-axis becomes "FM-LE" and y-axis "FM-UE"
+    ax.set_xlabel('FM-LE', fontsize=12)
     if ax == axes[0]:
-        ax.set_ylabel('Uex Score', fontsize=12)
+        ax.set_ylabel('FM-UE', fontsize=12)
     else:
         ax.set_ylabel('')
-    
+        
+        
     ax.set_xlim(0, x_lim)
     ax.set_ylim(0, y_lim)
     ax.set_xticks(x_ticks)

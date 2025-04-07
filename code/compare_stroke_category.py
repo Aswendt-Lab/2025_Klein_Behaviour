@@ -49,6 +49,8 @@ df_all = df_all[df_all['record_id'].isin(valid_ids)]
 # Define assessment order and stroke mappings
 ###############################
 assessment_order = ["FM-lex", "FM-uex", "BI", "MRS", "NIHSS"]
+assessment_map = {"FM-lex":"FM-LE", "FM-uex":"FM-UE", "BI":"BI", "MRS":"MRS", "NIHSS":"NIHSS"}
+
 df_all['assessment'] = pd.Categorical(df_all['assessment'], categories=assessment_order, ordered=True)
 df_all = df_all.sort_values('assessment')
 assessments = [a for a in assessment_order if a in df_all['assessment'].unique()]
@@ -101,8 +103,8 @@ for ax, assess in zip(axes, assessments):
         line_style = line_style_map.get(stroke_cat, "solid")
         color = stroke_color_map.get(stroke_cat, "black")
         
-        ax.plot(x_vals, y_vals, marker='o', markersize=2* (18/30), linestyle=line_style, color=color,
-                linewidth=1.5* (18/30), alpha=0.7)
+        ax.plot(x_vals, y_vals, marker='o', markersize=2*(18/30), linestyle=line_style, color=color,
+                linewidth=1.5*(18/30), alpha=0.7)
     
     # --- Update axes ---
     overall_min = df_assess['adjusted_score'].min()
@@ -111,14 +113,17 @@ for ax, assess in zip(axes, assessments):
     y_lim_lower = overall_min - 0.15 * overall_range
     y_lim_upper = overall_max + 0.15 * overall_range
     ax.set_ylim(y_lim_lower, y_lim_upper)
-    #ax.set_title(f"{assess}", fontsize=10)
-    # Adjust the y-axis label based on the assessment type
-    if assess in ['MRS', 'NIHSS']:
-        ax.set_ylabel("Max - Score", fontsize=12)
+    
+    # Set y-label only for FM-lex and MRS
+    if assess in ['FM-lex', 'MRS']:
+        if assess == 'MRS':
+            ax.set_ylabel("Max - Score", fontsize=12)
+        else:
+            ax.set_ylabel("Score", fontsize=12)
     else:
-        ax.set_ylabel("Score", fontsize=12)
-    ax.set_xlabel("Time Point")
-    ax.set_title(assess, fontsize=12)
+        ax.set_ylabel("")  # Remove y-label for other assessments
+    
+    ax.set_title(assessment_map[assess], fontsize=12)
     ax.set_xticks(range(len(order)))
     ax.set_xticklabels(order)
     ax.set_xlabel("Time Point", fontsize=12)
@@ -126,7 +131,7 @@ for ax, assess in zip(axes, assessments):
     sns.despine(ax=ax, top=True, right=True)
 
 plt.tight_layout()
-
+plt.subplots_adjust(wspace=0.37) 
 # Save the figure as an SVG file
 output_svg = os.path.join(svg_folder, "spaghetti_plots_by_assessment_stroke_category_sns.svg")
 plt.savefig(output_svg, format="svg")
