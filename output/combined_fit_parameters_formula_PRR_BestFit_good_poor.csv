@@ -1,0 +1,6 @@
+﻿Assessment Model,Formula-Best Fit_good cluster,Formula-Best Fit_poor cluster,Formula-PRR_good cluster,Formula-PRR_poor cluster,Ø error-Best Fit-good cluster (%),Ø error-Best Fit-poor cluster (%),Ø error-PRR-good cluster (%),Ø error-PRR-poor cluster (%),Good vs Poor Significance-Best Fit,Good vs Poor Significance-PRR
+BI,Y = 0.76X + 17.65,Y = 0.71X + 11.89,Y = 0.70X + 17.65,Y = 0.70X + 11.89,8.283023048316759,15.719655750512352,8.334594776821161,15.735268093740764,Yes (p < 0.05),Yes (p < 0.05)
+FM-lex,Y = 0.84X + 1.13,Y = 0.70X + 0.13,Y = 0.70X + 1.13,Y = 0.70X + 0.13,2.109763704881207,7.212307173910497,2.561736944881847,7.209568367606058,No (p > 0.05),No (p > 0.05)
+FM-uex,Y = 0.77X + -0.13,Y = 0.70X + -21.15,Y = 0.70X + -0.13,Y = 0.70X + -21.15,7.542071343578656,11.126111006607333,7.666758597268386,11.124586946107213,No (p > 0.05),No (p > 0.05)
+MRS,Y = 0.66X + -0.63,Y = 0.77X + -0.88,Y = 0.70X + -0.63,Y = 0.70X + -0.88,10.909382480173653,12.651076648775861,11.09681103949739,12.863137360626952,No (p > 0.05),No (p > 0.05)
+NIHSS,Y = 0.74X + 1.13,Y = 0.71X + 0.63,Y = 0.70X + 1.13,Y = 0.70X + 0.63,2.610367073004278,5.129661813991214,2.6867842162993103,5.139806743569119,Yes (p < 0.05),Yes (p < 0.05)

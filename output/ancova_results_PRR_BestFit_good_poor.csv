@@ -1,0 +1,21 @@
+﻿assessment,model_type,comparison,p_interaction,p_cluster,t_stat,p_value
+FM-lex,PRR,Good vs. Poor (ANCOVA),,2.065084202397854e-115,,
+FM-uex,PRR,Good vs. Poor (ANCOVA),,1.4711204392746063e-168,,
+BI,PRR,Good vs. Poor (ANCOVA),,0.0,,
+MRS,PRR,Good vs. Poor (ANCOVA),,0.7420250732840201,,
+NIHSS,PRR,Good vs. Poor (ANCOVA),,9.724100406263908e-258,,
+FM-lex,Best Fit,Good vs. Poor (ANCOVA),,1.4639676709984105e-114,,
+FM-uex,Best Fit,Good vs. Poor (ANCOVA),,1.6552829190923408e-166,,
+BI,Best Fit,Good vs. Poor (ANCOVA),,0.0,,
+MRS,Best Fit,Good vs. Poor (ANCOVA),,0.0,,
+NIHSS,Best Fit,Good vs. Poor (ANCOVA),,5.646900673638956e-252,,
+FM-lex,good subjects,PRR vs. Best Fit (paired),,,-7.208642123486124,5.604046009663554e-07
+FM-lex,poor subjects,PRR vs. Best Fit (paired),,,8.896266877541137,3.896109260030221e-07
+FM-uex,good subjects,PRR vs. Best Fit (paired),,,-15.96707458544366,7.562483760944326e-13
+FM-uex,poor subjects,PRR vs. Best Fit (paired),,,-31.62154954479115,2.0166497157233942e-14
+BI,good subjects,PRR vs. Best Fit (paired),,,-52.65722652357045,6.271107671462138e-23
+BI,poor subjects,PRR vs. Best Fit (paired),,,-49.16455884225893,4.409948096692779e-17
+MRS,good subjects,PRR vs. Best Fit (paired),,,44.49999999999994,1.767822928535188e-21
+MRS,poor subjects,PRR vs. Best Fit (paired),,,53.567355156488816,1.3352081748470791e-17
+NIHSS,good subjects,PRR vs. Best Fit (paired),,,-12.871692715908855,3.89968475231532e-11
+NIHSS,poor subjects,PRR vs. Best Fit (paired),,,-9.17109376656092,2.6982114974832984e-07

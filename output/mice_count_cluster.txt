@@ -1,0 +1,3 @@
+Total mice: 55
+Good cluster: 22
+Poor cluster: 33

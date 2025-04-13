@@ -1,0 +1,4 @@
+﻿Assessment Test,Formula-PRR,Formula-Best Fit,Ø Error-PRR %,Ø Error-Best Fit %,Significantly Different Error?
+Paw Drags,Y = 0.70X + -1.88,Y = 0.71X + -1.88,11.98,11.97,No (p > 0.05)
+Foot Faults,Y = 0.70X + -0.63,Y = 0.68X + -0.63,8.00,7.97,No (p > 0.05)
+Hindlimb Drops,Y = 0.70X + 0.38,Y = 0.86X + 0.38,7.04,5.92,No (p > 0.05)

@@ -1,0 +1,181 @@
+record_id,score_tp0,score_tp1,score_tp2,adjusted_score_tp0,adjusted_score_tp1,adjusted_score_tp2,fixed_type_tp0,fixed_type_tp1,fixed_type_tp2,stroke_type,recovery_type,stroke_category,assessment,cluster,INITIAL_IMPAIRMENT,CHANGE_OBSERVED
+2,83.0,85.0,86.0,83.0,85.0,86.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-lex,good,3.0,3.0
+3,67.0,75.0,80.0,67.0,75.0,80.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-lex,good,19.0,13.0
+4,79.0,75.0,85.0,79.0,75.0,85.0,good,good,good,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-lex,good,7.0,6.0
+8,59.0,82.0,86.0,59.0,82.0,86.0,good,good,good,ICB,Steady recovery,BLEEDING,FM-lex,good,27.0,27.0
+10,81.0,86.0,79.0,81.0,86.0,79.0,good,good,good,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT,FM-lex,good,5.0,-2.0
+12,54.0,68.0,82.0,54.0,68.0,82.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-lex,good,32.0,28.0
+18,66.0,80.0,86.0,66.0,80.0,86.0,good,good,good,Infrakt links,Steady recovery,INFARCT,FM-lex,good,20.0,20.0
+31,84.0,84.0,85.0,84.0,84.0,85.0,good,good,good,Basalganglieninfarkt,Steady recovery,INFARCT,FM-lex,good,2.0,1.0
+36,56.0,79.0,83.0,56.0,79.0,83.0,good,good,good,Mediateiinfarkt,Steady recovery,INFARCT,FM-lex,good,30.0,27.0
+40,76.0,84.0,86.0,76.0,84.0,86.0,good,good,good,Grenzzoneninfarkt links,Steady recovery,INFARCT,FM-lex,good,10.0,10.0
+47,79.0,83.0,86.0,79.0,83.0,86.0,good,good,good,ICB,Steady recovery,BLEEDING,FM-lex,good,7.0,7.0
+53,65.0,65.0,79.0,65.0,65.0,79.0,good,good,good,ICB,Steady recovery,BLEEDING,FM-lex,good,21.0,14.0
+58,62.0,86.0,86.0,62.0,86.0,86.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-lex,good,24.0,24.0
+59,70.0,72.0,86.0,70.0,72.0,86.0,good,good,good,Stammganglienblutung,Steady recovery,BLEEDING,FM-lex,good,16.0,16.0
+62,83.0,77.0,86.0,83.0,77.0,86.0,good,good,good,Thalamusinfarkt,Late recovery with acute decline,INFARCT,FM-lex,good,3.0,3.0
+66,65.0,86.0,83.0,65.0,86.0,83.0,good,good,good,Ischaemie links,Early recovery with chronic decline,INFARCT,FM-lex,good,21.0,18.0
+69,56.0,71.0,74.0,56.0,71.0,74.0,good,good,good,Infarkt medulla oblongata,Steady recovery,INFARCT,FM-lex,good,30.0,18.0
+78,62.0,77.0,80.0,62.0,77.0,80.0,good,good,good,Hirninfarkt a. cerebri media,Steady recovery,INFARCT,FM-lex,good,24.0,18.0
+86,67.0,69.0,83.0,67.0,69.0,83.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,FM-lex,good,19.0,16.0
+88,68.0,67.0,80.0,68.0,67.0,80.0,good,good,good,Kleinhirninfarkt,Late recovery with acute decline,INFARCT,FM-lex,good,18.0,12.0
+92,86.0,79.0,86.0,86.0,79.0,86.0,good,good,good,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-lex,good,0.0,0.0
+9,52.0,85.0,79.0,52.0,85.0,79.0,poor,poor,poor,Mediainfarkt,Early recovery with chronic decline,INFARCT,FM-lex,poor,34.0,27.0
+15,36.0,26.0,35.0,36.0,26.0,35.0,poor,poor,poor,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-lex,poor,50.0,-1.0
+22,50.0,57.0,75.0,50.0,57.0,75.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-lex,poor,36.0,25.0
+28,75.0,84.0,85.0,75.0,84.0,85.0,poor,poor,poor,Mediateilinfrakt,Steady recovery,INFARCT,FM-lex,poor,11.0,10.0
+42,47.0,64.0,83.0,47.0,64.0,83.0,poor,poor,poor,Ponsischaemie,Steady recovery,INFARCT,FM-lex,poor,39.0,36.0
+45,51.0,77.0,79.0,51.0,77.0,79.0,poor,poor,poor,Mediainfarkt rechts,Steady recovery,INFARCT,FM-lex,poor,35.0,28.0
+49,59.0,69.0,78.0,59.0,69.0,78.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,FM-lex,poor,27.0,19.0
+55,77.0,81.0,83.0,77.0,81.0,83.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-lex,poor,9.0,6.0
+72,46.0,56.0,52.0,46.0,56.0,52.0,poor,poor,poor,ICB,Early recovery with chronic decline,BLEEDING,FM-lex,poor,40.0,6.0
+73,50.0,36.0,50.0,50.0,36.0,50.0,poor,poor,poor,Ponsinfarkt,Late recovery with acute decline,INFARCT,FM-lex,poor,36.0,0.0
+79,65.0,49.0,79.0,65.0,49.0,79.0,poor,poor,poor,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-lex,poor,21.0,14.0
+80,78.0,85.0,86.0,78.0,85.0,86.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-lex,poor,8.0,8.0
+81,56.0,68.0,79.0,56.0,68.0,79.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,FM-lex,poor,30.0,23.0
+82,65.0,78.0,83.0,65.0,78.0,83.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-lex,poor,21.0,18.0
+85,45.0,56.0,70.0,45.0,56.0,70.0,poor,poor,poor,Infarkt Mediastromgebiet,Steady recovery,INFARCT,FM-lex,poor,41.0,25.0
+2,93.0,108.0,116.0,93.0,108.0,116.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-uex,good,33.0,23.0
+3,96.0,84.0,88.0,96.0,84.0,88.0,good,good,good,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-uex,good,30.0,-8.0
+4,89.0,92.0,117.0,89.0,92.0,117.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-uex,good,37.0,28.0
+8,89.0,109.0,119.0,89.0,109.0,119.0,good,good,good,ICB,Steady recovery,BLEEDING,FM-uex,good,37.0,30.0
+10,104.0,126.0,123.0,104.0,126.0,123.0,good,good,good,Bithalamische Infrakte,Early recovery with chronic decline,INFARCT,FM-uex,good,22.0,19.0
+12,94.0,80.0,124.0,94.0,80.0,124.0,good,good,good,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-uex,good,32.0,30.0
+18,83.0,120.0,126.0,83.0,120.0,126.0,good,good,good,Infrakt links,Steady recovery,INFARCT,FM-uex,good,43.0,43.0
+31,92.0,111.0,96.0,92.0,111.0,96.0,good,good,good,Basalganglieninfarkt,Early recovery with chronic decline,INFARCT,FM-uex,good,34.0,4.0
+36,98.0,105.0,93.0,98.0,105.0,93.0,good,good,good,Mediateiinfarkt,Early recovery with chronic decline,INFARCT,FM-uex,good,28.0,-5.0
+40,86.0,123.0,126.0,86.0,123.0,126.0,good,good,good,Grenzzoneninfarkt links,Steady recovery,INFARCT,FM-uex,good,40.0,40.0
+47,112.0,108.0,125.0,112.0,108.0,125.0,good,good,good,ICB,Late recovery with acute decline,BLEEDING,FM-uex,good,14.0,13.0
+53,97.0,64.0,60.0,97.0,64.0,60.0,good,good,good,ICB,Steady decline,BLEEDING,FM-uex,good,29.0,-37.0
+58,109.0,119.0,126.0,109.0,119.0,126.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,FM-uex,good,17.0,17.0
+59,94.0,106.0,126.0,94.0,106.0,126.0,good,good,good,Stammganglienblutung,Steady recovery,BLEEDING,FM-uex,good,32.0,32.0
+62,112.0,101.0,126.0,112.0,101.0,126.0,good,good,good,Thalamusinfarkt,Late recovery with acute decline,INFARCT,FM-uex,good,14.0,14.0
+66,93.0,112.0,115.0,93.0,112.0,115.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,FM-uex,good,33.0,22.0
+69,90.0,99.0,93.0,90.0,99.0,93.0,good,good,good,Infarkt medulla oblongata,Early recovery with chronic decline,INFARCT,FM-uex,good,36.0,3.0
+78,111.0,120.0,120.0,111.0,120.0,120.0,good,good,good,Hirninfarkt a. cerebri media,Steady recovery,INFARCT,FM-uex,good,15.0,9.0
+86,93.0,98.0,115.0,93.0,98.0,115.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,FM-uex,good,33.0,22.0
+88,94.0,103.0,108.0,94.0,103.0,108.0,good,good,good,Kleinhirninfarkt,Steady recovery,INFARCT,FM-uex,good,32.0,14.0
+92,90.0,86.0,97.0,90.0,86.0,97.0,good,good,good,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-uex,good,36.0,7.0
+9,74.0,100.0,112.0,74.0,100.0,112.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-uex,poor,52.0,38.0
+15,42.0,41.0,40.0,42.0,41.0,40.0,poor,poor,poor,Mediainfarkt,Steady decline,INFARCT,FM-uex,poor,84.0,-2.0
+22,58.0,83.0,89.0,58.0,83.0,89.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-uex,poor,68.0,31.0
+28,58.0,72.0,84.0,58.0,72.0,84.0,poor,poor,poor,Mediateilinfrakt,Steady recovery,INFARCT,FM-uex,poor,68.0,26.0
+42,60.0,96.0,120.0,60.0,96.0,120.0,poor,poor,poor,Ponsischaemie,Steady recovery,INFARCT,FM-uex,poor,66.0,60.0
+45,48.0,60.0,77.0,48.0,60.0,77.0,poor,poor,poor,Mediainfarkt rechts,Steady recovery,INFARCT,FM-uex,poor,78.0,29.0
+49,60.0,67.0,85.0,60.0,67.0,85.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,FM-uex,poor,66.0,25.0
+55,56.0,75.0,77.0,56.0,75.0,77.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-uex,poor,70.0,21.0
+72,54.0,54.0,49.0,54.0,54.0,49.0,poor,poor,poor,ICB,Steady decline,BLEEDING,FM-uex,poor,72.0,-5.0
+73,54.0,58.0,47.0,54.0,58.0,47.0,poor,poor,poor,Ponsinfarkt,Early recovery with chronic decline,INFARCT,FM-uex,poor,72.0,-7.0
+79,60.0,42.0,77.0,60.0,42.0,77.0,poor,poor,poor,Mediainfarkt,Late recovery with acute decline,INFARCT,FM-uex,poor,66.0,17.0
+80,64.0,100.0,121.0,64.0,100.0,121.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-uex,poor,62.0,57.0
+81,73.0,87.0,102.0,73.0,87.0,102.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,FM-uex,poor,53.0,29.0
+82,64.0,64.0,93.0,64.0,64.0,93.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,FM-uex,poor,62.0,29.0
+85,57.0,99.0,94.0,57.0,99.0,94.0,poor,poor,poor,Infarkt Mediastromgebiet,Early recovery with chronic decline,INFARCT,FM-uex,poor,69.0,37.0
+2,25.0,95.0,95.0,25.0,95.0,95.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,BI,good,75.0,70.0
+3,40.0,95.0,85.0,40.0,95.0,85.0,good,good,good,Mediainfarkt,Early recovery with chronic decline,INFARCT,BI,good,60.0,45.0
+4,25.0,70.0,85.0,25.0,70.0,85.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,BI,good,75.0,60.0
+8,25.0,80.0,100.0,25.0,80.0,100.0,good,good,good,ICB,Steady recovery,BLEEDING,BI,good,75.0,75.0
+10,20.0,70.0,90.0,20.0,70.0,90.0,good,good,good,Bithalamische Infrakte,Steady recovery,INFARCT,BI,good,80.0,70.0
+12,15.0,85.0,85.0,15.0,85.0,85.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,BI,good,85.0,70.0
+18,25.0,85.0,95.0,25.0,85.0,95.0,good,good,good,Infrakt links,Steady recovery,INFARCT,BI,good,75.0,70.0
+31,25.0,90.0,100.0,25.0,90.0,100.0,good,good,good,Basalganglieninfarkt,Steady recovery,INFARCT,BI,good,75.0,75.0
+36,10.0,90.0,100.0,10.0,90.0,100.0,good,good,good,Mediateiinfarkt,Steady recovery,INFARCT,BI,good,90.0,90.0
+40,20.0,90.0,100.0,20.0,90.0,100.0,good,good,good,Grenzzoneninfarkt links,Steady recovery,INFARCT,BI,good,80.0,80.0
+47,25.0,95.0,100.0,25.0,95.0,100.0,good,good,good,ICB,Steady recovery,BLEEDING,BI,good,75.0,75.0
+53,15.0,10.0,45.0,15.0,10.0,45.0,good,good,good,ICB,Late recovery with acute decline,BLEEDING,BI,good,85.0,30.0
+58,25.0,95.0,100.0,25.0,95.0,100.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,BI,good,75.0,75.0
+59,25.0,90.0,100.0,25.0,90.0,100.0,good,good,good,Stammganglienblutung,Steady recovery,BLEEDING,BI,good,75.0,75.0
+62,15.0,25.0,85.0,15.0,25.0,85.0,good,good,good,Thalamusinfarkt,Steady recovery,INFARCT,BI,good,85.0,70.0
+66,25.0,95.0,95.0,25.0,95.0,95.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,BI,good,75.0,70.0
+69,10.0,55.0,75.0,10.0,55.0,75.0,good,good,good,Infarkt medulla oblongata,Steady recovery,INFARCT,BI,good,90.0,65.0
+78,25.0,50.0,100.0,25.0,50.0,100.0,good,good,good,Hirninfarkt a. cerebri media,Steady recovery,INFARCT,BI,good,75.0,75.0
+86,15.0,70.0,100.0,15.0,70.0,100.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,BI,good,85.0,85.0
+88,25.0,45.0,45.0,25.0,45.0,45.0,good,good,good,Kleinhirninfarkt,Steady recovery,INFARCT,BI,good,75.0,20.0
+92,25.0,45.0,100.0,25.0,45.0,100.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,BI,good,75.0,75.0
+9,10.0,65.0,85.0,10.0,65.0,85.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,BI,poor,90.0,75.0
+15,5.0,10.0,15.0,5.0,10.0,15.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,BI,poor,95.0,10.0
+22,25.0,60.0,100.0,25.0,60.0,100.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,BI,poor,75.0,75.0
+28,15.0,95.0,85.0,15.0,95.0,85.0,poor,poor,poor,Mediateilinfrakt,Early recovery with chronic decline,INFARCT,BI,poor,85.0,70.0
+42,5.0,40.0,95.0,5.0,40.0,95.0,poor,poor,poor,Ponsischaemie,Steady recovery,INFARCT,BI,poor,95.0,90.0
+45,15.0,30.0,100.0,15.0,30.0,100.0,poor,poor,poor,Mediainfarkt rechts,Steady recovery,INFARCT,BI,poor,85.0,85.0
+49,5.0,40.0,85.0,5.0,40.0,85.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,BI,poor,95.0,80.0
+55,5.0,95.0,80.0,5.0,95.0,80.0,poor,poor,poor,Mediainfarkt,Early recovery with chronic decline,INFARCT,BI,poor,95.0,75.0
+72,5.0,15.0,45.0,5.0,15.0,45.0,poor,poor,poor,ICB,Steady recovery,BLEEDING,BI,poor,95.0,40.0
+73,5.0,20.0,35.0,5.0,20.0,35.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,BI,poor,95.0,30.0
+79,5.0,30.0,50.0,5.0,30.0,50.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,BI,poor,95.0,45.0
+80,25.0,100.0,100.0,25.0,100.0,100.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,BI,poor,75.0,75.0
+81,10.0,25.0,100.0,10.0,25.0,100.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,BI,poor,90.0,90.0
+82,10.0,45.0,100.0,10.0,45.0,100.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,BI,poor,90.0,90.0
+85,15.0,60.0,70.0,15.0,60.0,70.0,poor,poor,poor,Infarkt Mediastromgebiet,Steady recovery,INFARCT,BI,poor,85.0,55.0
+2,4.0,2.0,0.0,1.0,3.0,5.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,MRS,good,4.0,4.0
+3,4.0,1.0,2.0,1.0,4.0,3.0,good,good,good,Mediainfarkt,Early recovery with chronic decline,INFARCT,MRS,good,4.0,2.0
+4,5.0,2.0,2.0,0.0,3.0,3.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,MRS,good,5.0,3.0
+8,4.0,2.0,1.0,1.0,3.0,4.0,good,good,good,ICB,Steady recovery,BLEEDING,MRS,good,4.0,3.0
+10,4.0,3.0,2.0,1.0,2.0,3.0,good,good,good,Bithalamische Infrakte,Steady recovery,INFARCT,MRS,good,4.0,2.0
+12,5.0,2.0,3.0,0.0,3.0,2.0,good,good,good,Mediainfarkt,Early recovery with chronic decline,INFARCT,MRS,good,5.0,2.0
+18,4.0,3.0,2.0,1.0,2.0,3.0,good,good,good,Infrakt links,Steady recovery,INFARCT,MRS,good,4.0,2.0
+31,4.0,2.0,2.0,1.0,3.0,3.0,good,good,good,Basalganglieninfarkt,Steady recovery,INFARCT,MRS,good,4.0,2.0
+36,5.0,3.0,2.0,0.0,2.0,3.0,good,good,good,Mediateiinfarkt,Steady recovery,INFARCT,MRS,good,5.0,3.0
+40,4.0,2.0,1.0,1.0,3.0,4.0,good,good,good,Grenzzoneninfarkt links,Steady recovery,INFARCT,MRS,good,4.0,3.0
+47,4.0,1.0,1.0,1.0,4.0,4.0,good,good,good,ICB,Steady recovery,BLEEDING,MRS,good,4.0,3.0
+53,4.0,5.0,3.0,1.0,0.0,2.0,good,good,good,ICB,Late recovery with acute decline,BLEEDING,MRS,good,4.0,1.0
+58,4.0,2.0,1.0,1.0,3.0,4.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,MRS,good,4.0,3.0
+59,4.0,2.0,1.0,1.0,3.0,4.0,good,good,good,Stammganglienblutung,Steady recovery,BLEEDING,MRS,good,4.0,3.0
+62,4.0,4.0,3.0,1.0,1.0,2.0,good,good,good,Thalamusinfarkt,Steady recovery,INFARCT,MRS,good,4.0,1.0
+66,4.0,2.0,2.0,1.0,3.0,3.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,MRS,good,4.0,2.0
+69,5.0,4.0,3.0,0.0,1.0,2.0,good,good,good,Infarkt medulla oblongata,Steady recovery,INFARCT,MRS,good,5.0,2.0
+78,5.0,4.0,3.0,0.0,1.0,2.0,good,good,good,Hirninfarkt a. cerebri media,Steady recovery,INFARCT,MRS,good,5.0,2.0
+86,4.0,3.0,1.0,1.0,2.0,4.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,MRS,good,4.0,3.0
+88,4.0,4.0,3.0,1.0,1.0,2.0,good,good,good,Kleinhirninfarkt,Steady recovery,INFARCT,MRS,good,4.0,1.0
+92,4.0,3.0,2.0,1.0,2.0,3.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,MRS,good,4.0,2.0
+9,5.0,4.0,2.0,0.0,1.0,3.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,MRS,poor,5.0,3.0
+15,5.0,5.0,5.0,0.0,0.0,0.0,poor,poor,poor,Mediainfarkt,Unclassified,INFARCT,MRS,poor,5.0,0.0
+22,5.0,4.0,2.0,0.0,1.0,3.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,MRS,poor,5.0,3.0
+28,4.0,2.0,1.0,1.0,3.0,4.0,poor,poor,poor,Mediateilinfrakt,Steady recovery,INFARCT,MRS,poor,4.0,3.0
+42,5.0,4.0,2.0,0.0,1.0,3.0,poor,poor,poor,Ponsischaemie,Steady recovery,INFARCT,MRS,poor,5.0,3.0
+45,5.0,4.0,2.0,0.0,1.0,3.0,poor,poor,poor,Mediainfarkt rechts,Steady recovery,INFARCT,MRS,poor,5.0,3.0
+49,5.0,4.0,3.0,0.0,1.0,2.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,MRS,poor,5.0,2.0
+55,5.0,2.0,2.0,0.0,3.0,3.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,MRS,poor,5.0,3.0
+72,5.0,5.0,4.0,0.0,0.0,1.0,poor,poor,poor,ICB,Steady recovery,BLEEDING,MRS,poor,5.0,1.0
+73,5.0,5.0,4.0,0.0,0.0,1.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,MRS,poor,5.0,1.0
+79,5.0,4.0,3.0,0.0,1.0,2.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,MRS,poor,5.0,2.0
+80,4.0,3.0,2.0,1.0,2.0,3.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,MRS,poor,4.0,2.0
+81,5.0,4.0,3.0,0.0,1.0,2.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,MRS,poor,5.0,2.0
+82,5.0,4.0,2.0,0.0,1.0,3.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,MRS,poor,5.0,3.0
+85,5.0,3.0,3.0,0.0,2.0,2.0,poor,poor,poor,Infarkt Mediastromgebiet,Steady recovery,INFARCT,MRS,poor,5.0,2.0
+2,8.0,0.0,1.0,34.0,42.0,41.0,good,good,good,Mediainfarkt,Early recovery with chronic decline,INFARCT,NIHSS,good,8.0,7.0
+3,4.0,4.0,1.0,38.0,38.0,41.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,NIHSS,good,4.0,3.0
+4,8.0,5.0,1.0,34.0,37.0,41.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,NIHSS,good,8.0,7.0
+8,3.0,1.0,0.0,39.0,41.0,42.0,good,good,good,ICB,Steady recovery,BLEEDING,NIHSS,good,3.0,3.0
+10,4.0,1.0,0.0,38.0,41.0,42.0,good,good,good,Bithalamische Infrakte,Steady recovery,INFARCT,NIHSS,good,4.0,4.0
+12,7.0,2.0,0.0,35.0,40.0,42.0,good,good,good,Mediainfarkt,Steady recovery,INFARCT,NIHSS,good,7.0,7.0
+18,6.0,2.0,0.0,36.0,40.0,42.0,good,good,good,Infrakt links,Steady recovery,INFARCT,NIHSS,good,6.0,6.0
+31,5.0,4.0,1.0,37.0,38.0,41.0,good,good,good,Basalganglieninfarkt,Steady recovery,INFARCT,NIHSS,good,5.0,4.0
+36,7.0,3.0,0.0,35.0,39.0,42.0,good,good,good,Mediateiinfarkt,Steady recovery,INFARCT,NIHSS,good,7.0,7.0
+40,10.0,2.0,0.0,32.0,40.0,42.0,good,good,good,Grenzzoneninfarkt links,Steady recovery,INFARCT,NIHSS,good,10.0,10.0
+47,10.0,8.0,0.0,32.0,34.0,42.0,good,good,good,ICB,Steady recovery,BLEEDING,NIHSS,good,10.0,10.0
+53,5.0,9.0,5.0,37.0,33.0,37.0,good,good,good,ICB,Late recovery with acute decline,BLEEDING,NIHSS,good,5.0,0.0
+58,9.0,1.0,3.0,33.0,41.0,39.0,good,good,good,Mediainfarkt,Early recovery with chronic decline,INFARCT,NIHSS,good,9.0,6.0
+59,6.0,4.0,0.0,36.0,38.0,42.0,good,good,good,Stammganglienblutung,Steady recovery,BLEEDING,NIHSS,good,6.0,6.0
+62,3.0,2.0,1.0,39.0,40.0,41.0,good,good,good,Thalamusinfarkt,Steady recovery,INFARCT,NIHSS,good,3.0,2.0
+66,7.0,1.0,1.0,35.0,41.0,41.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,NIHSS,good,7.0,6.0
+69,7.0,5.0,2.0,35.0,37.0,40.0,good,good,good,Infarkt medulla oblongata,Steady recovery,INFARCT,NIHSS,good,7.0,5.0
+78,5.0,3.0,2.0,37.0,39.0,40.0,good,good,good,Hirninfarkt a. cerebri media,Steady recovery,INFARCT,NIHSS,good,5.0,3.0
+86,12.0,3.0,0.0,30.0,39.0,42.0,good,good,good,Ischaemie links,Steady recovery,INFARCT,NIHSS,good,12.0,12.0
+88,6.0,5.0,4.0,36.0,37.0,38.0,good,good,good,Kleinhirninfarkt,Steady recovery,INFARCT,NIHSS,good,6.0,2.0
+92,8.0,10.0,5.0,34.0,32.0,37.0,good,good,good,Mediainfarkt,Late recovery with acute decline,INFARCT,NIHSS,good,8.0,3.0
+9,11.0,2.0,1.0,31.0,40.0,41.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,NIHSS,poor,11.0,10.0
+15,24.0,19.0,13.0,18.0,23.0,29.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,NIHSS,poor,24.0,11.0
+22,9.0,5.0,3.0,33.0,37.0,39.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,NIHSS,poor,9.0,6.0
+28,9.0,3.0,2.0,33.0,39.0,40.0,poor,poor,poor,Mediateilinfrakt,Steady recovery,INFARCT,NIHSS,poor,9.0,7.0
+42,10.0,6.0,0.0,32.0,36.0,42.0,poor,poor,poor,Ponsischaemie,Steady recovery,INFARCT,NIHSS,poor,10.0,10.0
+45,6.0,9.0,6.0,36.0,33.0,36.0,poor,poor,poor,Mediainfarkt rechts,Late recovery with acute decline,INFARCT,NIHSS,poor,6.0,0.0
+49,12.0,6.0,3.0,30.0,36.0,39.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,NIHSS,poor,12.0,9.0
+55,8.0,6.0,7.0,34.0,36.0,35.0,poor,poor,poor,Mediainfarkt,Early recovery with chronic decline,INFARCT,NIHSS,poor,8.0,1.0
+72,20.0,13.0,5.0,22.0,29.0,37.0,poor,poor,poor,ICB,Steady recovery,BLEEDING,NIHSS,poor,20.0,15.0
+73,13.0,11.0,8.0,29.0,31.0,34.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,NIHSS,poor,13.0,5.0
+79,8.0,8.0,8.0,34.0,34.0,34.0,poor,poor,poor,Mediainfarkt,Unclassified,INFARCT,NIHSS,poor,8.0,0.0
+80,10.0,4.0,1.0,32.0,38.0,41.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,NIHSS,poor,10.0,9.0
+81,10.0,8.0,0.0,32.0,34.0,42.0,poor,poor,poor,Ponsinfarkt,Steady recovery,INFARCT,NIHSS,poor,10.0,10.0
+82,11.0,10.0,1.0,31.0,32.0,41.0,poor,poor,poor,Mediainfarkt,Steady recovery,INFARCT,NIHSS,poor,11.0,10.0
+85,8.0,2.0,3.0,34.0,40.0,39.0,poor,poor,poor,Infarkt Mediastromgebiet,Early recovery with chronic decline,INFARCT,NIHSS,poor,8.0,5.0

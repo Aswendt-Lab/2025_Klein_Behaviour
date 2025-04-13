@@ -1,0 +1,6 @@
+Assessment Model,Formula-good cluster,Formula-poor cluster,Average error-good cluster,Average error-poor cluster,Significantly different error?,Significantly different error (clean)?
+BI,Y = 0.76X + 17.59,Y = 0.72X + 11.56,8.280780393026696,15.699582715368718,No (p > 0.05),Yes (p = 0.035)
+FM-lex,Y = 0.83X + 1.51,Y = 0.68X + 0.50,2.2231128979705206,7.2102041105337635,No (p > 0.05),No (p = 0.348)
+FM-uex,Y = 0.78X + -0.50,Y = 0.71X + -21.61,7.50913868731319,11.115762842870808,No (p > 0.05),No (p = 0.085)
+MRS,Y = 0.63X + -0.50,Y = 0.69X + -0.50,11.017877003066271,13.110384242771783,No (p > 0.05),No (p = 0.903)
+NIHSS,Y = 0.84X + 0.50,Y = 0.72X + 0.50,2.3387224694446913,5.092754879891343,Yes (p > 0.05),Yes (p = 0.008)

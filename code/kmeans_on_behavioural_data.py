@@ -46,7 +46,7 @@ max_uex_score = 126
 max_lex_score = 86
 
 # For tick labels, the max tick is the true max, but the axis limits are set 15% higher.
-x_lim = max_lex_score * 1.15  # x-axis limit is 15% more than the max lex score.
+x_lim = max_lex_score * 1.15  # x-axis limit is 15% more than the max lex score09118294973.
 y_lim = max_uex_score * 1.15  # y-axis limit is 15% more than the max uex score.
 
 ###############################
@@ -72,9 +72,9 @@ fixed_cluster_means = pivot_fixed.groupby('fixed_cluster')[['lex', 'uex']].mean(
 fixed_cluster_means['combined'] = fixed_cluster_means.mean(axis=1)
 good_fixed_cluster = fixed_cluster_means['combined'].idxmax()
 
-# Label the fixed clusters: “good” if it equals the good_fixed_cluster, else “bad”
+# Label the fixed clusters: “good” if it equals the good_fixed_cluster, else “poor”
 pivot_fixed['fixed_type'] = pivot_fixed['fixed_cluster'].apply(
-    lambda x: 'good' if x == good_fixed_cluster else 'bad'
+    lambda x: 'good' if x == good_fixed_cluster else 'poor'
 )
 # Save the fixed assignment for later merging (dots always use these colors)
 fixed_df = pivot_fixed[['fixed_type']].copy()
@@ -103,9 +103,8 @@ Z_fixed_mapped = np.where(Z_fixed == good_fixed_cluster, 1, 0)
 timepoints = sorted(df['tp'].unique())
 cm = 1 / 2.52  # scaling factor for figure size
 
-# Define the palette: green for "good" and red for "bad"
-palette_new = {'good': 'green', 'bad': 'red'}
-
+# Define the palette: green for "good" and red for "poor"
+palette_new = {'good': '#E69F00', 'poor': '#CC79A7'}
 # List to store computed distances for each subject at each timepoint
 all_distances = []
 
@@ -154,7 +153,7 @@ for ax, tp in zip(axes, timepoints):
                colors='grey', linestyles='dashed', linewidths=1)
     
     # Plot the subject dots colored by the fixed clustering assignment (swap axes: x=lex, y=uex)
-    sns.scatterplot(
+    ax = sns.scatterplot(
         data=merged_for_dots,
         x='lex',
         y='uex',
@@ -162,10 +161,11 @@ for ax, tp in zip(axes, timepoints):
         palette=palette_new,
         s=15,
         edgecolor="black",
-        alpha=0.8,
+        alpha=1,
         ax=ax
     )
     
+    sns.despine(ax=ax, top=True, right=True)
     # Set new axis labels: x-axis becomes "FM-LE" and y-axis "FM-UE"
     ax.set_xlabel('FM-LE', fontsize=12)
     if ax == axes[0]:

@@ -1,0 +1,6 @@
+Assessment Model,Formula-PRR Fit,Formula-Best Fit,Regression error PRR,Regression Error Best Fit,Significantly differen error?
+FM-LE,Y = 0.70X + 1.13,Y = 0.76X + 1.13,4.52,4.45,No (p > 0.05)
+FM-UE,Y = 0.70X + -8.39,Y = 0.66X + -8.39,10.88,10.86,No (p > 0.05)
+BI,Y = 0.70X + 17.40,Y = 0.70X + 17.40,11.72,11.72,No (p > 0.05)
+MRS,Y = 0.70X + -0.63,Y = 0.66X + -0.63,11.88,11.76,No (p > 0.05)
+NIHSS,Y = 0.70X + 0.88,Y = 0.71X + 0.88,3.75,3.74,No (p > 0.05)
