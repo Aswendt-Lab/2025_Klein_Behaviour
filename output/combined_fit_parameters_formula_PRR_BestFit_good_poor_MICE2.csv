@@ -1,0 +1,4 @@
+﻿Assessment Model,Formula-Best Fit_good cluster,Formula-Best Fit_poor cluster,Formula-PRR_good cluster,Formula-PRR_poor cluster,Ø error-Best Fit-good cluster (%),Ø error-Best Fit-poor cluster (%),Ø error-PRR-good cluster (%),Ø error-PRR-poor cluster (%),Significantly Different Error?-Best Fit,Significantly Different Error?-PRR
+C_PawDragPercent,Y = 0.70X + -2.38,Y = 0.81X + -1.13,Y = 0.70X + -2.38,Y = 0.70X + -1.13,8.580593926203706,10.009040173846854,8.58050537306604,10.789485328353434,No (p > 0.05),No (p > 0.05)
+GW_FootFault,Y = 0.68X + 0.38,Y = 0.70X + -2.63,Y = 0.70X + 0.38,Y = 0.70X + -2.63,4.865609947532455,5.296021466117703,4.90217687751604,5.293544537778739,No (p > 0.05),No (p > 0.05)
+RB_HindlimbDrop,Y = 0.87X + 0.13,Y = 0.82X + 0.63,Y = 0.70X + 0.13,Y = 0.70X + 0.63,4.32636727701409,5.253465356298794,4.939382088788654,6.027666232784297,No (p > 0.05),No (p > 0.05)
